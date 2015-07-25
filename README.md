@@ -1,11 +1,13 @@
 
-## 搭建属于你自己的3D交互式网页简历
+## 搭建3D交互式网页简历
 =====
 这是我的3D网页简历 [fanlinfeng.xyz](http://fanlinfeng.xyz), 此网页在较新版本的chrome, safari, Firefox, opera中可以正常显示3D效果, 如果你喜欢, 可以修改里面的数据, 然后编译生成你自己的3D网页简历.
 考虑性能问题, 移动端是另一套网页
 
 ###1. 下载, 配置环境,
-```$ git clone git@github.com:flfwzgl/resume.git``` 下载此项目到本地. 此项目由dev和www两个文件夹组成, dev用于开发, www是最终编译到的目标文件夹.
+```$ git clone git@github.com:flfwzgl/resume.git``` 下载此项目, 将下载的resume文件夹重命名为dev, 
+```$ git clone -b gh-pages git@github.com:flfwzgl/resume.git```下载目标文件夹, 将下载的resume文件夹重命名为www
+dev用于开发, www是最终编译到的目标文件夹.
 安装nodejs, 然后在终端中切换到此项目文件夹中, ```$ sudo npm install gulp --save-dev``` 安装gulp.
 
 ###2. 修改数据
