@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>范林峰-个人简历</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script>
+		+function(){
+			var ua = window.navigator.userAgent;
+			if( ua.indexOf('Android') === -1 && ua.indexOf('iPad') === -1 && ua.indexOf('iPhone') === -1 ) location.href = "/";
+		}();
+	</script>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="../css/icon.css">
+</head>
+<body>
+	<div id="box">
+		<div class="face home">
+			<img src="../img/avatar.png" class="avatar">
+			<dl class="contact">
+				<dt fill="name"><%=data.name%></dt>
+				<dd fill="phone_">
+					<i class="icon-phone"></i><%=data.phone%>
+				</dd>
+				<dd fill="mail_">
+					<i class="icon-mail"></i><%=data.mail%>
+				</dd>
+				<dd fill="qq_">
+					<i class="icon-qq"></i><%=data.qq%>
+				</dd>
+				<dd fill="github_">
+					<i class="icon-github"></i> <a href="<%=data.github%>">github</a>
+				</dd>
+				<dd>
+					<i class="icon-lofter"></i> <a href="<%=data.lofter%>">lofter</a>				
+				</dd>
+			</ul>
+		</div>
+
+		<div class="face skill">
+			<%
+				for(var i=0, m=data.skill_des.length; i<m; i++){
+					%><p> <%=data.skill_des[i]%> </p><%
+				}
+			%>
+			<!-- <p>
+				我热爱web前端和CG技术, 对新技术有浓厚兴趣, 希望能找一份web前端开发的工作.
+			</p> -->
+			
+		</div>
+
+
+		<div class="face skill-chart">
+			<div class="chart">
+				<!--图表-->
+			</div>
+		</div>
+
+		<div class="face project">
+			<ul class="project-ul">
+			<%
+				var project = data.project;
+				for(var i=0, m=project.length; i<m; i++){
+			%>
+					<li>
+						<i><img src="../<%=project[i].img%>"></i>
+						<div><a href="<%=project[i].href%>"><%==project[i].name + project[i].des%></a></div>
+					</li>
+			<%
+				}
+			%>
+				<!-- <li>
+					<i><img src="../img/project/sczql.png"></i>
+					<div></div>
+				</li>
+				<li>
+					<i><img src="../img/project/select.png"></i>
+					<div><a href="https://github.com/flfwzgl/select">select 是一个功能仿jquery的库, 体积小, 加入了常用的jquery功能</a></div>
+				</li>
+				<li>
+					<i><img src="../img/project/move.png"></i>
+					<div><a href="https://github.com/flfwzgl/move">move 是一个js动画库, 包含几种常用的动画</a></div>
+				</li> -->
+			</ul>
+		</div>
+
+		<div class="face info">
+		<%
+			for(var i=0, m=data.info.length; i<m; i++){
+		%>
+				<div class="info-kind">
+					<h2><%=data.info[i].title%></h2>
+					<p><%=data.info[i].content%></p>
+				</div>
+		<%
+			}
+		%>
+		</div>
+
+		<div class="next"><img src="../img/next.png"></div>
+
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/highcharts.js"></script>
+	<script>
+		window.onload = function(){
+			var width = window.innerWidth,
+				height = window.innerHeight;
+
+			var $face = $('.face').each(function(i, e){ e.n = i; }),
+				face = $face.get(),
+				$chart = $('.chart');
+
+			var p = {
+				cur: 0,
+				z: 1,
+				t: 0.5
+			};
+			
+			document.documentElement.style.fontSize = height/32 + 'px';
+
+			$('.next').css({
+				left: (width-50)/2,
+				top: height-40,
+				display: 'block'
+			})
+			.on('click', function(){
+				if(p.running === true) return;				
+				p.running = true;
+				p.cur = p.cur === $face.length - 1 ? 0 : p.cur + 1;
+				p.z++;
+
+				$face.eq(p.cur).css('webkitTransitionDuration', '0s')
+				.css({
+					webkitTransform: 'translate3d(0, '+ height +'px, 0)',
+					zIndex: p.z,
+				});
+
+				
+				setTimeout(function(){
+					p.running = false;
+				}, p.t*1000);
+				setTimeout(function(){
+					$face.eq(p.cur).css({
+						webkitTransitionDuration: +p.t + 's',
+						webkitTransform: 'translate3d(0, 0, 0)'
+					});
+					if(p.cur === 2){
+						$chart.highcharts({
+							chart:{
+								type: 'column'
+							},
+							tooltip: {
+								enabled: false
+							},
+							title:{
+								text: '技能表'
+							},
+							credits:{
+								enabled: false
+							},
+							xAxis:{
+								labels:{ enabled: false },
+								type: 'category'
+							},
+							yAxis:{
+								max:100,
+								min: 0,
+								title: '深入程度'
+							},
+							plotOptions:{
+								column:{
+									pointPadding:0.6,
+									pointWidth:8,
+									borderWidth:0
+								}
+							},
+							series:[{
+								name: 'HTML(5)',
+								data: [<%=data.skill_chart.html%>]
+							}, {
+								name: 'CSS(3)',
+								data: [<%=data.skill_chart.css%>]
+							}, {
+								name: 'js',
+								data: [<%=data.skill_chart.js%>]
+							}, {
+								name: 'jQuery',
+								data: [<%=data.skill_chart.jquery%>]
+							}, {
+								name: 'Nodejs',
+								data: [<%=data.skill_chart.nodejs%>]
+							}, {
+								name: 'D3',
+								data: [<%=data.skill_chart.d3%>]
+							}, {
+								name: 'php',
+								data: [<%=data.skill_chart.php%>]
+							}, {
+								name: 'MySQL',
+								data: [<%=data.skill_chart.mysql%>]
+							}, {
+								name: 'Ps',
+								data: [<%=data.skill_chart.ps%>]
+							}, {
+								name: 'MAYA',
+								data: [<%=data.skill_chart.maya%>]
+							}]
+						});
+					}
+				}, 50);
+			});
+		}
+			
+	</script>
+
+</body>
+</html>
