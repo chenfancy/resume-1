@@ -42,9 +42,5 @@ gulp.task('rtt', function(){
 
 
 gulp.task('default', function(){
-	gulp.run('less', 'uglify', 'rtt');
-});
-
-gulp.task('all', function(){
 	gulp.run('less', 'uglify', 'rtt', 'copy');
 });

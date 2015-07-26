@@ -8,7 +8,7 @@ window.onload = function(){
 			navLi = fn.tag("li", nav);
 			//arrow = fn.cls("arrow", "div");
 
-		var page = ['home', 'ability', 'project', 'work', 'info'],
+		var page = ['home', 'ability', 'project', '3D_work', 'info'],
 			paramArr = window.location.href.split('#!'),
 			param = paramArr[1];
 
