@@ -158,11 +158,11 @@ window.onload = function(){
 			showImg = fn.tag('img', show),
 			temp = '';
 
-		var url = ['http://fanlinfeng.xyz/img/work/1/3.jpg', 
-				   'http://fanlinfeng.xyz/img/work/2/3.jpg', 
-				   'http://fanlinfeng.xyz/img/work/3/3.jpg',
-				   'http://fanlinfeng.xyz/img/work/4/3.jpg',
-				   'http://fanlinfeng.xyz/img/work/5/3.jpg'];
+		var url = ['img/work/1/3.jpg', 
+				   'img/work/2/3.jpg', 
+				   'img/work/3/3.jpg',
+				   'img/work/4/3.jpg',
+				   'img/work/5/3.jpg'];
 
 		
 		fn.bind(w_ul, 'mousewheel', cancelBubble);
