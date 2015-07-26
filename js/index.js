@@ -158,11 +158,11 @@ window.onload = function(){
 			showImg = fn.tag('img', show),
 			temp = '';
 
-		var url = ['img/work/1/3.jpg', 
-				   'img/work/2/3.jpg', 
-				   'img/work/3/3.jpg',
-				   'img/work/4/3.jpg',
-				   'img/work/5/3.jpg'];
+		var url = ['http://fanlinfeng.xyz/img/work/1/3.jpg', 
+				   'http://fanlinfeng.xyz/img/work/2/3.jpg', 
+				   'http://fanlinfeng.xyz/img/work/3/3.jpg',
+				   'http://fanlinfeng.xyz/img/work/4/3.jpg',
+				   'http://fanlinfeng.xyz/img/work/5/3.jpg'];
 
 		
 		fn.bind(w_ul, 'mousewheel', cancelBubble);
@@ -171,8 +171,8 @@ window.onload = function(){
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
 		fn.img(url, function(over){
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
-			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" src='"+ this.src +"'/></i>";
 
+			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" src='"+ this.src +"'/></i>";
 			show.innerHTML += "<i><img src='"+ this.src +"'/></i>";
 
 			if(over){
@@ -262,17 +262,17 @@ window.onload = function(){
 				var path = svg.getElementsByTagName('path');
 				var avatar = avatarContainer.getElementsByTagName('img')[0];
 
-				fn.move(2100, 950, 12000, function(v){
+				fn.move([2100, 950], 12000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
 				}, function(){
-					fn.move(1, 0, 1000, function(v){
+					fn.move([1, 0], 1000, function(v){
 						svg.style.opacity = v;
 					}, function(){
 						svg.parentNode.removeChild(svg);
 					})
-					fn.move(0, 1, 2000, function(v){
+					fn.move([0, 1], 2000, function(v){
 						avatar.style.opacity = v;
 					})
 				})

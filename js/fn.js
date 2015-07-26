@@ -70,39 +70,36 @@ fn = {
 		return string.replace(reg, '');
 	},
 
-	move: function(from, to, time, fn, fnEnd){
+	move: function(range, time, fn, fnEnd){
 		if(!fn) return;
-		var over = false;
-		var interval = 13;
-		var total = Math.ceil( time/interval );
-		var	t = 0;
-		var	va = (to - from)/total;		//平均速度va
-		var	v = 0.5*va;					//初速度是0.5倍va
-		var	a = (3-0.5)*va/(0.5*total);	//加速度是最大速度3倍va-v0除以时间的一半
-		var dis = to - from;
-		var d = 0;	//位移
-		var res;
+		var interval = 13,
+			from = range[0],
+			to = range[1],
+			total = Math.ceil(time/interval),	//总次数
+			dis = to - from,
+			va = dis/total,						//平均速度
+			a = va*1.7/(total/2);					//加速度
+			
+		var v = va*0.3, d = 0, res, t = 0;
 
 		var timer = setInterval(function(){
 			t++;
-			if( Math.abs(d) < Math.abs(dis/2) ){
-				v += a;
-				d += v;
-				
-			}
-			else if( Math.abs(d) >= Math.abs(dis/2) && Math.abs(d) <= Math.abs(dis) ){
-				v -= a;
-				d += v;
-			}
+			if( Math.abs(d) < 0.5*Math.abs(dis) ) v += a;
+			else if ( Math.abs(d) > 0.5*Math.abs(dis) && Math.abs(d) < Math.abs(dis) ) v -= a;
+			d += v;
 			res = from + d;
-			if((v > 0 && res > to) || (v < 0 && res < to)) res = to;
-			
-			fn(res);
-			if( t > total || res === to ){
+			if( va >= 0 && res >= to || va < 0 && res <= to || t >= total ){
 				clearInterval(timer);
+				res = to;
+				fn(res);
 				if(fnEnd) fnEnd();
 			}
+			else fn(res);
 		}, interval);
+		return function(){
+			clearInterval(timer);
+			delete this.stop;
+		};
 	}
 };
 
