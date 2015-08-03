@@ -34,17 +34,17 @@
 		"name": "select",
 		"des": "是一个功能仿jquery的库, 体积小, 加入了常用的jquery功能",
 		"img": "img/project/select.png",
-		"href": "https://github.com/flfwzgl/select"
+		"href": "http://idemo.cc/select/"
 	},{
 		"name": "move",
 		"des": "是一个js动画库, 包含几种常用的动画",
 		"img": "img/project/move.png",
-		"href": "https://github.com/flfwzgl/move"
+		"href": "http://idemo.cc/move/"
 	},{
-		"name": "rtt",
-		"des": "(replace templete tool)是一个基于nodejs的模板替换工具",
-		"img": "img/project/rtt.png",
-		"href": "https://github.com/flfwzgl/rtt"
+		"name": "dom",
+		"des": "这是一个超轻量且兼容到 <font color='#c00'>IE5</font> 的选择器",
+		"img": "img/project/dom.png",
+		"href": "http://flfwzgl.github.io/dom/test/"
 	}],
 	"info":[{
 		"title": "○ 英语能力",
