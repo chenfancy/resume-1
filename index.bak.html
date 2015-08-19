@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>范林峰-个人简历</title>
+	<title><%=data.name%>-个人简历</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
 	<meta name="renderer" content="webkit">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maxinum-scale=1.0, user-scalable=no"> -->
@@ -13,58 +13,67 @@
 		if(browser.mobile) location.href = "/mobile";
 	</script>
 	<script>
+		var bgUrl = "<%=data.bg%>";
 		fn.id('link').href = browser.support ? 'css/index.css' : 'css/old.css';
 	</script>
+	<link rel="stylesheet" href="css/icon.css">
 </head>
 <body>
 	<div id="stage">
 		<div id="cube">
-			<div class="face_home">
+			<div class="face face_home">
 				<div class="content home">
-					<img class="avatar auto" src="img/avatar.png" alt="头像">
-					<h1 class="name center f48">范林峰</h1>
-					<ul class="contact auto">
-						<li>
-							<i><img src="img/phone.png"></i>
-							<span>18565720532</span>
-						</li>
-						<li>
-							<i><img src="img/mail.png"></i>
-							<span>flfwzgl@qq.com</span>
-						</li>
-						<li>
-							<i><img src="img/qq.png"></i>
-							<span><a href="tencent://message/?uin=583187400&amp;Site=qq&amp;Menu=yes" target="_self">583187400</a></span>
-						</li>
-						<li>
-							<i><img src="img/github.png"></i>
-							<span><a href="https://github.com/flfwzgl">github</a></span>
-						</li>
-						<li>
-							<i><img src="img/lofter.png"></i>
-							<span><a href="http://flfwzgl.lofter.com/">lofter</a></span>
-						</li>
-					</ul>
+					<div class="avatar-box">
+						<div class="avatar-container">
+							<%include('mod/me.svg')%>
+							<img src="img/me.png" alt="头像">							
+						</div>
+					</div>
+					<div class="contact-box">
+						<h1 class="name center f48"><%=data.name%></h1>
+						<ul class="contact auto">
+							<li>
+								<i class="icon-phone"></i>
+								<span><%=data.phone;%></span>
+							</li>
+							<li>
+								<i class="icon-mail"></i>
+								<span><%=data.mail%></span>
+							</li>
+							<li>
+								<i class="icon-qq"></i>
+								<span><a href="tencent://message/?uin=<%=data.qq%>&amp;Site=qq&amp;Menu=yes" target="_self"><%=data.qq%></a></span>
+							</li>
+							<li>
+								<i class="icon-github"></i>
+								<span><a href="<%=data.github%>">github</a></span>
+							</li>
+							<li>
+								<i class="icon-lofter"></i>
+								<span><a href="<%=data.lofter%>">lofter</a></span>
+							</li>
+						</ul>				
+					</div>
 				</div>
 			</div>
-			<div class="face_skill">
+			<div class="face face_skill">
 				<div class="content skill">
 					<div class="skill_des">
-						<p>
-							我热爱web前端和CG技术, 对新技术有浓厚兴趣, 希望能找一份web前端开发的工作.
-						</p>
-						<p>
-							<b>前端:</b> 熟练使用 html(5) 和 css(3) , 对 javascript 有较深入学习, 可用原生 javascript 实现复杂效果, 熟悉面向对象编程,仿过<a href="http://flfwzgl.sinaapp.com">京东首页</a> 和 <a href="https://github.com/flfwzgl/select">仿过jquery</a>, 并且兼容低版本IE.
-						</p>
-						<p>
-							<b>后端:</b> 熟练使用 php 和 mysql , 做过简单会员登录系统, 了解 MVC 及常用设计模式, 配合 AJAX 实现无刷新更新. 独立完成网站 <a href="http://www.sczql.cn">环游网</a>.
-						</p>
-						<p>
-							<b>CG:</b> 有较深 Ps 功底, 非常熟练使用 Autodesk Maya 制作各种复杂的写实模型, 照片级别渲染图, 熟悉影视后期, 对电影级别绑定和动画有一定研究.
-						</p>					
+					<%
+						for(var i=0, m=data.skill_des.length; i<m; i++){
+							%><p> <%=data.skill_des[i]%> </p><%
+						}
+					%>
+								
 					</div>
 					<ul class="skill_chart">
-						<li> <i k="html-70"></i> 	<div><i></i></div> </li>
+					<%
+						var attr, skillChart = data.skill_chart;
+						for(attr in skillChart){
+							%><li> <i k="<%=attr + '-' + skillChart[attr]%>" ><img src="img/svg/<%=attr%>.svg"></i>	<div><i></i></div> </li><%
+						}
+					%>
+						<!-- <li> <i k="html-70"></i> 	<div><i></i></div> </li>
 						<li> <i k="css-70"></i> 	<div><i></i></div> </li>
 						<li> <i k="js-80"></i> 		<div><i></i></div> </li>
 						<li> <i k="jquery-70"></i> 	<div><i></i></div> </li>
@@ -73,33 +82,34 @@
 						<li> <i k="php-40"></i> 	<div><i></i></div> </li>
 						<li> <i k="mysql-40"></i> 	<div><i></i></div> </li>
 						<li> <i k="ps-95"></i> 		<div><i></i></div> </li>
-						<li> <i k="maya-90"></i> 	<div><i></i></div> </li>
+						<li> <i k="maya-90"></i> 	<div><i></i></div> </li> -->
 					</ul>
 				</div>
 			</div>
-			<div class="face_project">
+			<div class="face face_project">
 				<div class="content project">
-					<div>
+				<%
+					var project = data.project;
+					for(var i=0, m=project.length; i<m; i++){
+				%>
+						<div>
+							<a href="<%=(project[i].href?project[i].href:'javascript:;')%>"><img src="<%=project[i].img%>"></a>
+							<p class="p_des">
+								<a class="b" href="<%=(project[i].href?project[i].href:'javascript:;')%>"><%=project[i].name%></a><%=project[i].des%>
+							</p>
+						</div>
+				<%
+					}
+				%>
+					<!-- <div>
 						<a href="http://www.sczql.cn"><img src="img/project/sczql.png"></a>
 						<p class="p_des">
 							<a class="b" href="http://www.sczql.cn">环游网</a>是四川中青旅旗下一个网站
 						</p>
-					</div>
-					<div>
-						<a href="https://github.com/flfwzgl/select"><img src="img/project/select.png"></a>
-						<p class="p_des">
-							<a class="b" href="https://github.com/flfwzgl/select">select</a> 是一个功能仿jquery的库, 体积小, 加入了常用的jquery功能
-						</p>
-					</div>
-					<div>
-						<a href="https://github.com/flfwzgl/move"><img src="img/project/move.png"></a>
-						<p class="p_des">
-							<a class="b" href="https://github.com/flfwzgl/move">move</a> 是一个js动画库, 包含几种常用的动画
-						</p>						
-					</div>
+					</div> -->
 				</div>
 			</div>
-			<div class="face_work">
+			<div class="face face_work">
 				<div class="content work">
 					<h2 class="w_title">3D作品</h2>
 					<ul class="w_ul">
@@ -121,26 +131,23 @@
 					</ul>
 				</div>
 			</div>
-			<div class="face_info">
+			<div class="face face_info">
 				<div class="content info">
-					<div class="english">
+				<%
+					for(var i=0, m=data.info.length; i<m; i++){
+				%>
+					<div>
+						<h2><%=data.info[i].title%></h2>
+						<p><%=data.info[i].content%></p>
+					</div>	
+				<%
+					}
+				%>
+				<!-- 	<div class="english">
 						<h2> ○ 英语能力</h2>
 						<p>大学英语6级</p>
 					</div>
-					<div class="education">
-						<h2> ○ 教育经历</h2>
-						<p>
-							<b>毕业院校: </b>成都信息工程大学<br>
-							<b>专业: </b>电子科学与技术<br>
-							<b>学历: </b>本科
-						</p>
-					</div>
-					<div class="education">
-						<h2> ○ 获奖经历</h2>
-						<p>
-							获学校Ps大赛三等奖<br>
-						</p>
-					</div>	
+				 -->
 				</div>
 			</div>
 		</div>
@@ -153,6 +160,8 @@
 	<div style="width: ; position:fixed; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)">
 		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254758957'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254758957%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
+
+	<a href="<%=data.github+'/resume'%>" style="width:150px; height:150px; position:fixed; top:0; right:0"><img src="img/fork.png"></a>
 
 	<script>
 		var script = document.createElement('script');

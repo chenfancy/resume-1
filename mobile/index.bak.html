@@ -4,51 +4,49 @@
 	<meta charset="UTF-8">
 	<title>范林峰-个人简历</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="css/index.css">
 	<script>
 		+function(){
 			var ua = window.navigator.userAgent;
 			if( ua.indexOf('Android') === -1 && ua.indexOf('iPad') === -1 && ua.indexOf('iPhone') === -1 ) location.href = "/";
 		}();
 	</script>
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="../css/icon.css">
 </head>
 <body>
 	<div id="box">
 		<div class="face home">
 			<img src="../img/avatar.png" class="avatar">
 			<dl class="contact">
-				<dt fill="name">范林峰</dt>
+				<dt fill="name"><%=data.name%></dt>
 				<dd fill="phone_">
-					<i><img src="../img/phone.png"></i> 18565720532
+					<i class="icon-phone"></i><%=data.phone%>
 				</dd>
 				<dd fill="mail_">
-					<i><img src="../img/mail.png"></i> flfwzgl@qq.com
+					<i class="icon-mail"></i><%=data.mail%>
 				</dd>
 				<dd fill="qq_">
-					<i><img src="../img/qq.png"></i> 583187400
+					<i class="icon-qq"></i><%=data.qq%>
 				</dd>
 				<dd fill="github_">
-					<i><img src="../img/github.png"></i> <a href="https://github.com/flfwzgl">github</a>
+					<i class="icon-github"></i> <a href="<%=data.github%>">github</a>
 				</dd>
 				<dd>
-					<i><img src="../img/lofter.png"></i> <a href="http://flfwzgl.lofter.com">lofter</a>				
+					<i class="icon-lofter"></i> <a href="<%=data.lofter%>">lofter</a>				
 				</dd>
 			</ul>
 		</div>
 
 		<div class="face skill">
-			<p>
+			<%
+				for(var i=0, m=data.skill_des.length; i<m; i++){
+					%><p> <%=data.skill_des[i]%> </p><%
+				}
+			%>
+			<!-- <p>
 				我热爱web前端和CG技术, 对新技术有浓厚兴趣, 希望能找一份web前端开发的工作.
-			</p>
-			<p>
-				<b>前端:</b> 熟练使用 html(5) 和 css(3) , 对 javascript 有较深入学习, 可用原生 javascript 实现复杂效果, 熟悉面向对象编程,仿过京东首页和仿过jquery, 并且兼容低版本IE.
-			</p>
-			<p>
-				<b>后端:</b> 熟练使用 php 和 mysql , 做过简单会员登录系统, 了解 MVC 及常用设计模式, 配合 AJAX 实现无刷新更新. 独立完成网站 环游网.
-			</p>
-			<p>
-				<b>CG:</b> 有较深 Ps 功底, 非常熟练使用 Autodesk Maya 制作各种复杂的写实模型, 照片级别渲染图, 熟悉影视后期, 对电影级别绑定和动画有一定研究.
-			</p>
+			</p> -->
+			
 		</div>
 
 
@@ -60,9 +58,20 @@
 
 		<div class="face project">
 			<ul class="project-ul">
-				<li>
+			<%
+				var project = data.project;
+				for(var i=0, m=project.length; i<m; i++){
+			%>
+					<li>
+						<i><img src="../<%=project[i].img%>"></i>
+						<div><a href="<%=project[i].href%>"><%==project[i].name + project[i].des%></a></div>
+					</li>
+			<%
+				}
+			%>
+				<!-- <li>
 					<i><img src="../img/project/sczql.png"></i>
-					<div>环游网是四川中青旅旗下一个网站, 所有工作由我一人独立完成</div>
+					<div></div>
 				</li>
 				<li>
 					<i><img src="../img/project/select.png"></i>
@@ -71,39 +80,25 @@
 				<li>
 					<i><img src="../img/project/move.png"></i>
 					<div><a href="https://github.com/flfwzgl/move">move 是一个js动画库, 包含几种常用的动画</a></div>
-				</li>
+				</li> -->
 			</ul>
 		</div>
 
 		<div class="face info">
-			<div class="info-kind">
-				<h2> ○ 英语能力</h2>
-				<p>大学英语6级</p>
-			</div>
-			<div class="info-kind">
-				<h2> ○ 教育经历</h2>
-				<p>
-					<b>毕业院校: </b>成都信息工程大学<br>
-					<b>专业: </b>电子科学与技术<br>
-					<b>学历: </b>本科
-				</p>
-			</div>
-			<div class="info-kind">
-				<h2> ○ 获奖经历</h2>
-				<p>
-					获学校Ps大赛三等奖<br>
-					<a href="http://baike.baidu.com/link?url=yA66vLDGo5isW34g5C6JGH_m_Nox-vt8S89Dq0vbNJXQFZjot2b0_eZ56nCK40jtFaNjmoysq1FXj4Z7IamRq_#3_4">美国时代周刊2006年年度人物</a><br>
-					<a href="http://www.sundxs.com/baike/16345.html">获2008年感动中国组委会特别大奖</a><img style="width:auto;height:auto;" src="../img/funny.png">
-				</p>
-			</div>	
+		<%
+			for(var i=0, m=data.info.length; i<m; i++){
+		%>
+				<div class="info-kind">
+					<h2><%=data.info[i].title%></h2>
+					<p><%=data.info[i].content%></p>
+				</div>
+		<%
+			}
+		%>
 		</div>
 
 		<div class="next"><img src="../img/next.png"></div>
 
-	</div>
-
-	<div style="width: ; position:fixed; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)">
-		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254758957'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254758957%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 	</div>
 
 	<script src="js/jquery.min.js"></script>
@@ -140,9 +135,9 @@
 				.css({
 					webkitTransform: 'translate3d(0, '+ height +'px, 0)',
 					zIndex: p.z,
-				})
+				});
 
-				//防止动画执行过程中多次点击切换按键
+				
 				setTimeout(function(){
 					p.running = false;
 				}, p.t*1000);
@@ -183,34 +178,34 @@
 							},
 							series:[{
 								name: 'HTML(5)',
-								data: [75]
+								data: [<%=data.skill_chart.html%>]
 							}, {
 								name: 'CSS(3)',
-								data: [75]
+								data: [<%=data.skill_chart.css%>]
 							}, {
 								name: 'js',
-								data: [85]
+								data: [<%=data.skill_chart.js%>]
 							}, {
 								name: 'jQuery',
-								data: [75]
+								data: [<%=data.skill_chart.jquery%>]
 							}, {
 								name: 'Nodejs',
-								data: [25]
+								data: [<%=data.skill_chart.nodejs%>]
 							}, {
 								name: 'D3',
-								data: [25]
+								data: [<%=data.skill_chart.d3%>]
 							}, {
 								name: 'php',
-								data: [50]
+								data: [<%=data.skill_chart.php%>]
 							}, {
 								name: 'MySQL',
-								data: [50]
+								data: [<%=data.skill_chart.mysql%>]
 							}, {
 								name: 'Ps',
-								data: [98]
+								data: [<%=data.skill_chart.ps%>]
 							}, {
 								name: 'MAYA',
-								data: [90]
+								data: [<%=data.skill_chart.maya%>]
 							}]
 						});
 					}

@@ -1,0 +1,96 @@
+include data/var.jade
+
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title= name + '-个人简历'
+		meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome')
+		meta(name='renderer', content='webkit')
+		link(rel='stylesheet', id='link')
+		script(src='js/fn.min.js')
+		script if(browser.mobile) location.href = "/mobile";
+		script.
+			var bgUrl = "#{bgUrl}";
+			fn.id('link').href = browser.support ? 'css/index.css' : 'css/old.css';
+		link(rel='stylesheet', href='css/icon.css') 
+	body
+		div#stage
+			div#cube
+				div.face.face_home
+					div.content.home
+						div.avatar-box
+							div.avatar-container
+								include mod/me.svg
+								img(src='img/me.png', alt='头像')
+						div.contact-box
+							h1.name.center.f48= name
+							ul.contact.auto
+								li
+									i.icon-phone
+									span= phone
+								li
+									i.icon-mail
+									span= mail
+								li
+									i.icon-qq
+									span
+										a(href='tencent://message/?uin='+ qq + '&Site=qq&Menu=yes target=_self')= qq
+								li
+									i.icon-github
+									span
+										a(href= github) github
+								li
+									i.icon-lofter
+									span
+										a(href= lofter) lofter
+				div.face.face_skill
+					div.content.skill
+						div.skill_des
+							- each v, i in skill_des
+								p!= v
+						ul.skill_chart
+							each v, a in skill_chart
+								li
+									i(k= a + '-' + v)
+										img(src= 'img/svg/' + a + '.svg')
+									div
+										i
+				div.face.face_project
+					div.content.project
+						- each v, i in project
+							div
+								a(href= v.href||'javascript:;')
+									img(src= v.img)
+								p.p_des
+									a.b(href= v.href||'javascript:;')= v.name
+									!= v.des
+				div.face.face_work
+					div.content.work
+						h2.w_title 3D作品
+						ul.w_ul
+							li
+							li
+							li
+							li
+							li
+				div.face.face_info
+					div.content.info
+						- each v, i in info
+							div
+								h2= v.title
+								p!= v.content
+		ul#nav
+		base(target='_blank')
+		div#show
+
+		div(style='position:fixed; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)').
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254758957'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1254758957%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+
+		a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
+			img(src='img/fork.png')
+
+		script.
+			var script = document.createElement('script');
+			script.src = browser.support ? 'js/index.min.js' : 'js/old.min.js';
+			document.body.appendChild(script);
