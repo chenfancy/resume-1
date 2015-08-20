@@ -49,7 +49,7 @@ html(lang='en')
 							i
 								img(src= '../' + v.img)
 							div
-								a(href= v.href)= v.name + v.des
+								a(href= v.href)!= v.name + v.des
 
 			div.face.info
 				- each v, i in info
