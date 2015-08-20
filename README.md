@@ -13,7 +13,7 @@ dev用于开发, www是最终编译到的目标文件夹.
 安装nodejs, 然后安装gulp, ```$ sudo npm install gulp -g``` 安装gulp.
 
 ###2. 修改数据
-在dev/data/data.json中修改对应数据, 可以使用 ```<br>``` 或者是一些行内标签, 也可以用```p```增加段数, 页面会自适应, 如果想添加或删除面, 可以直接去dev/index.src.html和dev/mobile/index.src.jade 添加删除 class为face的div, 然后在里面进行修改, 整个立方体会自动匹配角度.
+在dev/data/var.jade中修改对应数据, 可以使用 ```<br>``` 或者是一些行内标签, 也可以用```p```增加段数, 页面会自适应, 如果想添加或删除面, 可以直接去dev/index.src.jade和dev/mobile/index.src.jade 添加删除 class为face的div, 然后在里面进行修改, 整个立方体会自动匹配角度.
 图片没有进行编译, 因此修改图片的位置在 www/img
 
 ###3. 编译生成目标文件上传
