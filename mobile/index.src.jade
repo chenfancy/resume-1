@@ -63,13 +63,10 @@ html(lang='en')
 		script(src= 'js/jquery.min.js')
 		script(src= 'js/highcharts.js')
 		script.
-			window.onload = function(){
-				var width = window.innerWidth,
-					height = window.innerHeight;
-
+			setTimeout(function(){
 				var $face = $('.face').each(function(i, e){ e.n = i; }),
-					face = $face.get(),
-					$chart = $('.chart');
+						face = $face.get(),
+						$chart = $('.chart');
 
 				var p = {
 					cur: 0,
@@ -77,11 +74,11 @@ html(lang='en')
 					t: 0.5
 				};
 				
-				document.documentElement.style.fontSize = height/32 + 'px';
+				document.documentElement.style.fontSize = window.innerHeight/32 + 'px';
 
 				$('.next').css({
-					left: (width-50)/2,
-					top: height-40,
+					left: (window.innerWidth-50)/2,
+					top: window.innerHeight-40,
 					display: 'block'
 				})
 				.on('click', function(){
@@ -92,7 +89,7 @@ html(lang='en')
 
 					$face.eq(p.cur).css('webkitTransitionDuration', '0s')
 					.css({
-						webkitTransform: 'translate3d(0, '+ height +'px, 0)',
+						webkitTransform: 'translate3d(0, '+ window.innerHeight +'px, 0)',
 						zIndex: p.z,
 					});
 
@@ -170,11 +167,5 @@ html(lang='en')
 						}
 					}, 50);
 				});
-			}
-
-
-
-
-
-
-
+			}, 500);
+			
