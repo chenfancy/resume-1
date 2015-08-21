@@ -264,24 +264,41 @@ var move = {
 			showImg = fn.tag('img', show),
 			temp = '';
 
-		var url = ['img/work/1/3.jpg', 
-				   'img/work/2/3.jpg', 
-				   'img/work/3/3.jpg',
-				   'img/work/4/3.jpg',
-				   'img/work/5/3.jpg'];
+		var url = ['img/work/watch/(frame|viewport|comp).jpg', 
+							'img/work/einstein/(frame|rim|comp).jpg', 
+							'img/work/ironman/(frame|occ|comp).jpg',
+							'img/work/snail/(frame|occ|comp).jpg',
+							'img/work/policeman/(frame|comp).jpg',
+							'img/work/tiger/comp.jpg',
+							'img/work/bmw/comp.jpg'
+							];
+
+		var allUrl = (function(){
+			for(var i = 0, m = url.length, res = []; i < m; i++){
+				res.push( extendUrl(url[i]).split('|') );
+			}
+			return res;
+		})();
+		var coverUrl = (function(){
+			for(var i = 0, m = allUrl.length, res = [], temp; i < m; i++){
+				temp = allUrl[i].length - 1;
+				res.push( allUrl[i][temp] );
+			}
+			return res;
+		})();
 
 		
 		fn.bind(w_ul, 'mousewheel', cancelBubble);
 		fn.bind(w_ul, 'DOMMouseScroll', cancelBubble);
 
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
-		fn.img(url, function(over){
+		fn.img(coverUrl, function(over){
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
 			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" src='"+ this.src +"'/></i>";
 
-			show.innerHTML += "<i><img src='"+ this.src +"'/></i>";
+			show.innerHTML += "<i><img i="+this.index+" src='"+ this.src +"'/></i>";
 			if(over){
-				otherImg(url);
+				fn.img([].concat.apply([], allUrl));
 				fn.each(w_img, function(i, e){
 					fn.bind(e, 'click', function(){
 						//将n得到, n代表第几个加载完成,从0开始
@@ -293,11 +310,11 @@ var move = {
 					fn.bind(showImg[i], 'click', cancelBubble);
 					fn.bind(showImg[i], 'mousemove', function(e){
 						e = e||window.event;
-						var n = Math.ceil( (e.clientX - fn.position(this).left)*3/this.offsetWidth );
-						n = Math.max(1, Math.min(3, n));
-						this.src = this.src.replace(/^(.+\/)[0-9]+(\.[^\.]+)$/g, function(){
-							return arguments[1] + n + arguments[2];
-						});
+						var index = +fn.get(this, 'i');
+						var n = Math.floor( (e.clientX - fn.position(this).left)*allUrl[index].length/this.offsetWidth );
+
+						n = Math.max(0, Math.min(allUrl[index].length-1, n));
+						this.src = allUrl[index][n];
 					});
 				});
 			}
@@ -326,14 +343,15 @@ var move = {
 			}
 		}
 
-		function otherImg(arr){
-			var other = [], temp;
-			for(var i=0, m=arr.length; i<m; i++){
-				temp = arr[i].split('3.');
-				other.push( temp.join('1.') );
-				other.push( temp.join('2.') );
-			}
-			fn.img(other);
+		//将 img/work/ironman/(diffuse|production).jpg 变为 img/work/ironman/diffuse.jpg|img/work/ironman/production.jpg
+		function extendUrl(url){
+			return url.replace(/^([^\(\)]*)\(([^\(\)]+\|+[^\(\)]+)\)([^\(\)]*)$/g, function(){
+				var arg = arguments, temp = arg[2].split('|'), res='';
+				for(var i=0, m=temp.length; i<m; i++){
+					res += arg[1] + temp[i] + arg[3] + '|';
+				}
+				return res.replace(/\|*$/g, '')
+			});
 		}
 
 		//传入一个数组, 返回数组中dom节点高度最小的index
