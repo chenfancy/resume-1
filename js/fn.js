@@ -2,6 +2,7 @@ fn = {
 	bind: function(obj, type, fn){
 		if(obj.attachEvent) obj.attachEvent('on'+type, function(){ fn.call(obj); });
 		else obj.addEventListener(type, fn, false);
+		return this;
 	},
 	filter:	function(arr, fn){
 		for(var i=0, m=arr.length, res=[]; i<m; i++) if( fn.call(arr[i], i, arr[i], arr) ) res.push(arr[i]);

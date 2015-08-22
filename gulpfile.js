@@ -18,11 +18,11 @@ gulp.task('less', function(){
 //compress and rename *.js
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
-		.pipe(uglify())
+	//	.pipe(uglify())
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
-		.pipe(gulp.dest('../www/'));
+		.pipe(gulp.dest('../www/', {overwrite: true}));
 })
 
 //copy fonts file

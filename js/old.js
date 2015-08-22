@@ -182,12 +182,11 @@ var move = {
 	}
 
 	
-	fn.bind(cube, "mousewheel", wheel);
-	fn.bind(document, "keydown", wheel);
-
-	fn.bind(window, 'resize', function(){
-		adjust();
-	});
+	fn.bind(cube, "mousewheel", wheel)
+		.bind(document, "keydown", wheel)
+		.bind(window, 'resize', function(){
+			adjust();
+		});
 
 	function wheel(e){
 		e = e||window.event;
@@ -265,12 +264,12 @@ var move = {
 			temp = '';
 
 		var url = ['img/work/watch/(frame|viewport|comp).jpg', 
-							'img/work/einstein/(frame|rim|comp).jpg', 
-							'img/work/ironman/(frame|occ|comp).jpg',
-							'img/work/snail/(frame|occ|comp).jpg',
-							'img/work/policeman/(frame|comp).jpg',
-							'img/work/tiger/comp.jpg',
-							'img/work/bmw/comp.jpg'
+								'img/work/einstein/(frame|rim|comp).jpg', 
+								'img/work/ironman/(frame|occ|comp).jpg',
+								'img/work/snail/(frame|occ|comp).jpg',
+								'img/work/policeman/(frame|comp).jpg',
+								'img/work/tiger/comp.jpg',
+								'img/work/bmw/comp.jpg'
 							];
 
 		var allUrl = (function(){
@@ -288,36 +287,38 @@ var move = {
 		})();
 
 		
-		fn.bind(w_ul, 'mousewheel', cancelBubble);
-		fn.bind(w_ul, 'DOMMouseScroll', cancelBubble);
+		fn.bind(w_ul, 'mousewheel', cancelBubble)
+			.bind(w_ul, 'DOMMouseScroll', cancelBubble)
+			.bind(w_ul, 'click', function(e){
+				var o = e.target
+				if( o.tagName === "IMG" ){
+					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
+					var num = +fn.get(o, 'n');
+					show.style.display = 'block';
+					show.scrollTop = fn.position(showImg[num]).top-30;	
+				}
+			})
+			.bind(show, 'mousemove', function(e){
+				var o = e.target;
+				if(o.tagName === 'IMG'){
+					e = e || window.event;
+					var index = +fn.get(o, 'i');
+					var n = Math.floor( (e.clientX - fn.position(o).left)*allUrl[index].length/o.offsetWidth );
+					n = Math.max(0, Math.min(allUrl[index].length-1, n));
+					o.src = allUrl[index][n];
+				}
+			})
+			.bind(show, 'click', function(e){
+				if(this === e.target) show.style.display = 'none';
+			});
 
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
 		fn.img(coverUrl, function(over){
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
-			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" src='"+ this.src +"'/></i>";
+			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
+			show.innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
 
-			show.innerHTML += "<i><img i="+this.index+" src='"+ this.src +"'/></i>";
-			if(over){
-				fn.img([].concat.apply([], allUrl));
-				fn.each(w_img, function(i, e){
-					fn.bind(e, 'click', function(){
-						//将n得到, n代表第几个加载完成,从0开始
-						var num = +fn.get(this, 'n');
-						show.style.display = 'block';
-						show.scrollTop = fn.position(showImg[num]).top-30;
-					});
-
-					fn.bind(showImg[i], 'click', cancelBubble);
-					fn.bind(showImg[i], 'mousemove', function(e){
-						e = e||window.event;
-						var index = +fn.get(this, 'i');
-						var n = Math.floor( (e.clientX - fn.position(this).left)*allUrl[index].length/this.offsetWidth );
-
-						n = Math.max(0, Math.min(allUrl[index].length-1, n));
-						this.src = allUrl[index][n];
-					});
-				});
-			}
+			if(over) fn.img([].concat.apply([], allUrl));
 		});
 
 		// fn.each(url, function(i, e){
@@ -327,9 +328,6 @@ var move = {
 
 
 
-		fn.bind(show, 'click', function(){
-			show.style.display = 'none';
-		});
 
 
 		function cancelBubble(e){

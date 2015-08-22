@@ -9,8 +9,8 @@ window.onload = function(){
 			//arrow = fn.cls("arrow", "div");
 
 		var page = ['home', 'ability', 'projects', '3D_works', 'info'],
-			paramArr = window.location.href.split('#!'),
-			param = paramArr[1];
+				paramArr = window.location.href.split('#!'),
+				param = paramArr[1];
 
 		var n = face.length, i=0;
 
@@ -46,20 +46,18 @@ window.onload = function(){
 		}
 
 		//设置翻页事件
-		fn.bind(cube, "mousewheel", wheel);
-		fn.bind(cube, "DOMMouseScroll", wheel);
-		fn.bind(document, "keydown", wheel);
-
-		fn.bind(window, "resize", function(){
-			adjust();
-			nav.style.cssText = "left:"+(cube.width-nav.offsetWidth)/2+"px; top:"+(cube.height-20)+"px";
-		});
-
-		//点击前进后退触发事件处理程序
-		fn.bind(window, 'popstate', function(e){
-			var state = e.state;
-			changePage(cube.cur=state.cur);
-		});
+		fn.bind(cube, "mousewheel", wheel)
+			.bind(cube, "DOMMouseScroll", wheel)
+			.bind(document, "keydown", wheel)
+			.bind(window, "resize", function(){
+				adjust();
+				nav.style.cssText = "left:"+(cube.width-nav.offsetWidth)/2+"px; top:"+(cube.height-20)+"px";
+			})
+			//点击前进后退触发事件处理程序
+			.bind(window, 'popstate', function(e){
+				var state = e.state;
+				changePage(cube.cur=state.cur);
+			});
 
 		//让cube自适应
 		function adjust(){
@@ -79,13 +77,13 @@ window.onload = function(){
 
 		//滚滑轮和点击方向键执行函数
 		function wheel(e){
-			e = e||window.event;
+			e = e || window.event;
 			var delta;
-			if(e.detail) delta=e.detail;
-			else if(e.wheelDelta) delta=e.wheelDelta/-40;
+			if(e.detail) delta = e.detail;
+			else if(e.wheelDelta) delta = e.wheelDelta/-40;
 			else if(e.keyCode){
-				if(e.keyCode===37||e.keyCode===38 ) delta=-3;
-				else if(e.keyCode===39||e.keyCode===40) delta=3;
+				if(e.keyCode === 37 || e.keyCode === 38) delta = -3;
+				else if(e.keyCode === 39 || e.keyCode === 40) delta = 3;
 			} 
 
 			if(cube.running === true) return;	//防止滑轮滚动的时候乱窜
@@ -137,9 +135,9 @@ window.onload = function(){
 	(function(){
 		//技能页
 		var skill_chart = fn.cls('skill_chart')[0],
-			I = fn.tag('i', skill_chart),
-			skill_icon = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="LI" ? true : false; }),
-			skill_score = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="DIV" ? true : false; });
+				I = fn.tag('i', skill_chart),
+				skill_icon = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="LI"; }),
+				skill_score = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="DIV"; });
 
 		for(var i=0, m=skill_icon.length; i<m; i++){
 			// skill_icon[i].style.backgroundPosition = "0px "+ i*-40 +"px";
@@ -151,20 +149,20 @@ window.onload = function(){
 	(function(){
 		//3d作品展示
 		var w_ul = fn.cls('w_ul', 'ul')[0],
-			w_li = fn.tag('li', w_ul),
-			w_img = fn.tag('img', w_ul);
+				w_li = fn.tag('li', w_ul),
+				w_img = fn.tag('img', w_ul);
 
 		var show = fn.id('show'),
-			showImg = fn.tag('img', show),
-			temp = '';
+				showImg = fn.tag('img', show),
+				temp = '';
 
 		var url = ['img/work/watch/(frame|viewport|comp).jpg', 
-							'img/work/einstein/(frame|rim|comp).jpg', 
-							'img/work/ironman/(frame|occ|comp).jpg',
-							'img/work/snail/(frame|occ|comp).jpg',
-							'img/work/policeman/(frame|comp).jpg',
-							'img/work/tiger/comp.jpg',
-					 		'img/work/bmw/comp.jpg'
+								'img/work/einstein/(frame|rim|comp).jpg', 
+								'img/work/ironman/(frame|occ|comp).jpg',
+								'img/work/snail/(frame|occ|comp).jpg',
+								'img/work/policeman/(frame|comp).jpg',
+								'img/work/tiger/comp.jpg',
+						 		'img/work/bmw/comp.jpg'
 							];
 
 		var allUrl = (function(){
@@ -181,44 +179,43 @@ window.onload = function(){
 			return res;
 		})();
 		
-		fn.bind(w_ul, 'mousewheel', cancelBubble);
-		fn.bind(w_ul, 'DOMMouseScroll', cancelBubble);
+		fn.bind(w_ul, 'mousewheel', cancelBubble)
+			.bind(w_ul, 'DOMMouseScroll', cancelBubble)
+			.bind(w_ul, 'click', function(e){
+				var o = e.target
+				if(o.tagName === "IMG"){
+					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
+					var num = +fn.get(o, 'n');
+					show.style.display = 'block';
+					show.scrollTop = fn.position(showImg[num]).top-30;	
+				}
+			})
+			.bind(show, 'mousemove', function(e){
+				var o = e.target;
+				if( o.tagName === 'IMG'){
+					e = e || window.event;
+					var index = +fn.get(o, 'i');
+					var n = Math.floor( (e.clientX - fn.position(o).left)*allUrl[index].length/o.offsetWidth );
+					n = Math.max(0, Math.min(allUrl[index].length-1, n));
+					o.src = allUrl[index][n];
+				}
+			})
+			.bind(show, 'click', function(e){
+				if(this === e.target) show.style.display = 'none';
+			});
 
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
 		fn.img(coverUrl, function(over){
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
+			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
+			show.innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
 
-			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" src='"+ this.src +"'/></i>";
-			show.innerHTML += "<i><img i="+this.index+" src='"+ this.src +"'/></i>";
-
-			if(over){
-				//首页图片加载完成之后再加载其他图片, 然后设置事件
-				fn.img([].concat.apply([], allUrl));
-				fn.each(w_img, function(i, e){
-					fn.bind(e, 'click', function(){
-						//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
-						var num = +fn.get(this, 'n');	
-						show.style.display = 'block';
-						show.scrollTop = fn.position(showImg[num]).top-30;
-					});
-
-					fn.bind(showImg[i], 'click', cancelBubble);
-					fn.bind(showImg[i], 'mousemove', function(e){
-						e = e||window.event;
-						var index = +fn.get(this, 'i');
-						var n = Math.floor( (e.clientX - fn.position(this).left)*allUrl[index].length/this.offsetWidth );
-						n = Math.max(0, Math.min(allUrl[index].length-1, n));
-						this.src = allUrl[index][n];
-					});
-				});
-			}
+			if(over) fn.img([].concat.apply([], allUrl));
 		});
 
 
 
-		fn.bind(show, 'click', function(){
-			show.style.display = 'none';
-		});
+
 
 
 		function cancelBubble(e){
@@ -241,6 +238,14 @@ window.onload = function(){
 				}
 				return res.replace(/\|*$/g, '')
 			});
+		}
+
+		//a 是否包裹 b
+		function isWrap(a, b){
+			while(b){
+				if( b === a ) return true;
+				b = b.parentNode;
+			}
 		}
 
 		//传入一个数组, 返回数组中dom节点高度最小的index
