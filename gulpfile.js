@@ -18,7 +18,7 @@ gulp.task('less', function(){
 //compress and rename *.js
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
-	//	.pipe(uglify())
+		.pipe(uglify())
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))

@@ -157,12 +157,13 @@ window.onload = function(){
 				temp = '';
 
 		var url = ['img/work/watch/(frame|viewport|comp).jpg', 
-								'img/work/einstein/(frame|rim|comp).jpg', 
-								'img/work/ironman/(frame|occ|comp).jpg',
+								'img/work/einstein/(sculpt|frame|rim|comp).jpg', 
+								'img/work/ironman/(frame|occ|rim|sp|comp).jpg',
 								'img/work/snail/(frame|occ|comp).jpg',
 								'img/work/policeman/(frame|comp).jpg',
 								'img/work/tiger/comp.jpg',
-						 		'img/work/bmw/comp.jpg'
+						 		'img/work/bmw/comp.jpg',
+						 		'img/work/lowpoly/comp.jpg'
 							];
 
 		var allUrl = (function(){
