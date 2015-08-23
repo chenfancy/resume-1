@@ -194,7 +194,6 @@ window.onload = function(){
 			.bind(show, 'mousemove', function(e){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
-					e = e || window.event;
 					var index = +fn.get(o, 'i');
 					var n = Math.floor( (e.clientX - fn.position(o).left)*allUrl[index].length/o.offsetWidth );
 					n = Math.max(0, Math.min(allUrl[index].length-1, n));

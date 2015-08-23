@@ -12,7 +12,7 @@ html(lang='en')
 		script if(browser.mobile) location.href = "/mobile";
 		script.
 			var bgUrl = "#{bgUrl}";
-			fn.id('link').href = browser.support ? 'css/index.css' : 'css/old.css';
+			document.write("<link rel='stylesheet' href='"+ (browser.support ? 'css/index.css' : 'css/old.css') +"'>");
 		link(rel='stylesheet', href='css/icon.css') 
 	body
 		div#stage
@@ -91,6 +91,7 @@ html(lang='en')
 			img(src='img/fork.png')
 
 		script.
-			var script = document.createElement('script');
-			script.src = browser.support ? 'js/index.min.js' : 'js/old.min.js';
-			document.body.appendChild(script);
+			document.write("\<script src='"+ (browser.support ? 'js/index.min.js' : 'js/old.min.js') +"'\>\</script\>");
+
+
+

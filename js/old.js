@@ -290,7 +290,8 @@ var move = {
 		fn.bind(w_ul, 'mousewheel', cancelBubble)
 			.bind(w_ul, 'DOMMouseScroll', cancelBubble)
 			.bind(w_ul, 'click', function(e){
-				var o = e.target
+				e = e || window.event;
+				var o = e.srcElement;
 				if( o.tagName === "IMG" ){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
 					var num = +fn.get(o, 'n');
@@ -299,7 +300,8 @@ var move = {
 				}
 			})
 			.bind(show, 'mousemove', function(e){
-				var o = e.target;
+				e = e || window.event;				
+				var o = e.srcElement;
 				if(o.tagName === 'IMG'){
 					e = e || window.event;
 					var index = +fn.get(o, 'i');
@@ -309,7 +311,8 @@ var move = {
 				}
 			})
 			.bind(show, 'click', function(e){
-				if(this === e.target) show.style.display = 'none';
+				e = e || window.event;
+				if(this === e.srcElement) show.style.display = 'none';
 			});
 
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
