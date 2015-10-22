@@ -1,4 +1,8 @@
 
 
+# main:
+# 	gulp
+
+
 main:
-	gulp
+	TARGET=main gulp

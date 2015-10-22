@@ -44,5 +44,6 @@ gulp.task('jade', function(){
 
 
 gulp.task('default', function(){
+	// console.log(process.env.TARGET)
 	gulp.run('less', 'uglify', 'jade', 'copy');
 });
