@@ -15,4 +15,4 @@ push:
 	git push origin temp:master -f
 
 direct-deploy:
-	git add -A && git commit -m '$(commit)' && git push origin temp:master -f
+	git add -A && git commit -m 'update' && git push origin temp:master -f
