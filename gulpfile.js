@@ -9,7 +9,7 @@ var rename = require('gulp-rename');
 
 //compile less
 gulp.task('less', function(){
-	gulp.src(['**/*.less', '!node_modules/**/*.*'])
+	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*'])
 		.pipe(less())
 		.pipe(minifyCss())
 		.pipe(gulp.dest('../www'));
