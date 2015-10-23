@@ -126,7 +126,6 @@
 	if( ua.indexOf('Macintosh') > -1 ) browser.mac = true;
 	if( browser.ff || (browser.chrome&&browser.version>31) || browser.mobile || browser.mac ) browser.support = true;
 	if( browser.ie && browser.version < 10 ) browser.old_ie = true;
-
 	window.browser = browser;
 })();
 
