@@ -12,6 +12,6 @@ www:
 
 	
 update: main
-	git commit -a -m '$(m)' && git push origin temp:master -f
+	git add -A && git commit -m '$(m)' && git push origin temp:master -f
 	cd ../www &&\
-	git commit -a -m '$(m)' && git push origin temp:gh-pages -f
+	git add -A && git commit -m '$(m)' && git push origin temp:gh-pages -f
