@@ -1,4 +1,4 @@
-include ../data/var.jade
+include ../data/data.jade
 
 doctype html
 html(lang='en')
@@ -23,8 +23,8 @@ html(lang='en')
 						i.icon-phone
 						= phone
 					dd
-						i.icon-mail
-						= mail
+						i.icon-email
+						= email
 					dd
 						i.icon-qq
 						= qq
@@ -34,6 +34,7 @@ html(lang='en')
 					dd
 						i.icon-lofter
 						a(href= lofter) lofter
+
 			
 			div.face.skill
 				- each v, i in skill_des

@@ -89,68 +89,68 @@ a{
 
 
 .content{
-	width:70%;
-	height:85%;
-	color:#666;
-	margin:50px auto;
+	width: 70%;
+	height: 85%;
+	color: #666;
+	margin: 50px auto;
 	.rel();
-	overflow:hidden;
-	line-height:30px;
-	max-width:1200px;
-	min-width:300px;
+	overflow: hidden;
+	line-height: 30px;
+	max-width: 1200px;
+	min-width: 300px;
 }
 
 .avatar{
-	width:150px; 
-	height:150px;
+	width: 150px; 
+	height: 150px;
 	display: block;
-	border-radius:100px;
-	border:0px solid #6cf;
+	border-radius: 100px;
+	border: 0px solid #6cf;
 	/*box-shadow:0px 0px 8px #555;*/
 }
 .avatar-box{
-	width:50%;
+	width: 50%;
 	.rel();
-	float:left;
-	min-width:320px;
-	min-height:400px;
+	float: left;
+	min-width: 320px;
+	min-height: 400px;
 	
 	.avatar-container{
-		width:320px;
-		height:400px;
-		margin:0 auto;
+		width: 320px;
+		height: 400px;
+		margin: 0 auto;
 		.rel();
-		overflow:hidden;
-		border-radius:20px;
+		overflow: hidden;
+		border-radius: 20px;
 		img{
 			.abs();
-			opacity:0;
-			left:0;
-			top:0;
+			opacity: 0;
+			left: 0;
+			top: 0;
 		}
 		path{
-			stroke-dasharray:2000;
-			stroke-dashoffset:2000;
+			stroke-dasharray: 2000;
+			stroke-dashoffset: 2000;
 		}
 	}
 }
 
 .contact-box{
-	width:50%;
-	float:right;
+	width: 50%;
+	float: right;
 }
 
 
 .name{
-	width:200px;
-	heigth:50px;
-	line-height:50px;
-	color:#666;
-	margin:30px auto;
+	width: 200px;
+	heigth: 50px;
+	line-height: 50px;
+	color: #666;
+	margin: 30px auto;
 }
 
 .contact{
-	width:190px;
+	width: 190px;
 	.rel();
 	li{
 		width:100%;
@@ -165,67 +165,79 @@ a{
 			font-size: 25px;
 		}
 		span{
-			width:150px;
-			float:right;
-			font-size:20px;
-			white-space: nowrap;	
+			width: 150px;
+			float: right;
+			font-size: 16px;
+			white-space: nowrap;
+			a{
+				text-decoration: underline;
+			}	
 		}
 	}
 }
 
 
 .skill{
-	color:#fff;
-	/*border-radius:20px;*/
+	color: #fff;
+	/*border-radius: 20px;*/
 }
 
 .skill_des{
-	width:45%;
-	height:100%;
-	min-width:250px;
-	max-width:580px;
-	float:left;
+	width: 45%;
+	height: 100%;
+	min-width: 250px;
+	max-width: 580px;
+	float: left;
+	p{
+		font-size: 14px;
+		line-height: 1.8;
+		margin: 10px auto;
+		a{
+			color: #722;
+			text-decoration: underline;
+		}	
+	}
 }
 
 
 .skill_chart{
-	width:40%;
-	height:100%;
+	width: 40%;
+	height: 100%;
 	.rel();
-	min-width:250px;
-	max-width:580px;
-	float:right;
+	min-width: 250px;
+	max-width: 580px;
+	float: right;
 	&>li{
-		width:100%;
-		height:40px;
+		width: 100%;
+		height: 40px;
 		.rel();
-		margin-bottom:5px;
+		margin-bottom: 5px;
 		&:hover>i{
 			.tf(rotate(360deg));
 		}
 		&>i{
-			width:40px;
-			height:40px;
-			float:left;
-			/* background:url(../img/skill.png) no-repeat; */
+			width: 40px;
+			height: 40px;
+			float: left;
+			/* background: url(../img/skill.png) no-repeat; */
 			.fade(.5s);
 		}
 		
 		&>div{
-			border-radius:5px;
-			width:80%;
-			max-width:420px;
-			height:10px;
+			border-radius: 5px;
+			width: 80%;
+			max-width: 420px;
+			height: 10px;
 			.bc(#ddd);
-			/*box-shadow:0px 0px 6px #000 inset;*/
-			left:50px;
-			top:15px;
+			/*box-shadow: 0px 0px 6px #000 inset;*/
+			left: 50px;
+			top: 15px;
 			.abs();
-			overflow:hidden;
+			overflow: hidden;
 			&>i{
-				height:100%;
-				float:left;
-				background:#a09;
+				height: 100%;
+				float: left;
+				background: #a09;
 			}
 		}
 	}
@@ -234,61 +246,61 @@ a{
 
 .project{
 	&>div{
-		width:150px;
-		height:150px;
-		margin:8px;
-		float:left;
+		width: 150px;
+		height: 150px;
+		margin: 8px;
+		float: left;
 		&>a{
-			width:80px;
-			height:80px;
-			margin:0px auto 10px auto;
+			width: 80px;
+			height: 80px;
+			margin: 0px auto 10px auto;
 			.block();
 			.br(100px);
-			overflow:hidden;
+			overflow: hidden;
 		}
 	}
 	
 }
 
 .p_des{
-	height: ;
-	line-height:20px;
-	margin:0px;
-	font-size:14px;
-	overflow:hidden;
+	height:  ;
+	line-height: 20px;
+	margin: 0px;
+	font-size: 14px;
+	overflow: hidden;
 }
 
 .work{
-	margin:30px auto;
-	width:80%;
-	height:80%;
-	padding-top:40px;
-	/*background:rgba(210, 210, 210, 0.8);
-	border-radius:5px;
-	box-shadow:0px 3px 6px #333;*/
+	margin: 30px auto;
+	width: 80%;
+	height: 80%;
+	padding-top: 40px;
+	/*background: rgba(210, 210, 210, 0.8);
+	border-radius: 5px;
+	box-shadow: 0px 3px 6px #333;*/
 }
 .w_title{
-	width:95%;
-	line-height:40px;
-	margin-top:-40px;
-	font-style:italic;
+	width: 95%;
+	line-height: 40px;
+	margin-top: -40px;
+	font-style: italic;
 	.abs();
 }
 .w_ul{
-	height:100%;
-	/*padding-right:20px;*/
-	overflow-x:hidden;
-	overflow-y:scroll;
+	height: 100%;
+	/*padding-right: 20px;*/
+	overflow-x: hidden;
+	overflow-y: scroll;
 	&>li{
-		width:20%;
-		margin:0;
-		float:left;
+		width: 20%;
+		margin: 0;
+		float: left;
 		&>i{
-			/*width:100%;	*/
+			/*width: 100%;	*/
 			height: ;
-			line-height:0px;
-			float:left;
-			margin:5px 5px;
+			line-height: 0px;
+			float: left;
+			margin: 5px 5px;
 			.fade();
 			.bs(0px 0px 8px #555);
 			.border(3px solid #fff);
@@ -304,23 +316,23 @@ a{
 
 
 #show{
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 	.fixed();
 	.bc(rgba(0, 0, 0, 0.85));
-	background-image:url(../img/close.png);
-	background-repeat:no-repeat;
-	background-size:80px 80px;
-	background-position:10% 5%;
-	overflow-x:hidden;
-	overflow-y:scroll;
-	display:none;
+	background-image: url(../img/close.png);
+	background-repeat: no-repeat;
+	background-size: 80px 80px;
+	background-position: 10% 5%;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	display: none;
 	&>i{
-		width:80%;
-		max-width:800px;
-		margin:20px auto;
+		width: 80%;
+		max-width: 800px;
+		margin: 20px auto;
 		.block();
-		line-height:0px;
+		line-height: 0px;
 		.border(5px solid #fff);
 		.fade();
 	}
@@ -329,62 +341,67 @@ a{
 
 
 .info>div{
-	width:90%;
-	margin:10px auto;
+	width: 90%;
+	margin: 10px auto;
 	&>h2{
-		width:60%;
-		margin-left:0px;
-		height:40px;
-		font-size:20px;
-		font-weight:bold;
-		line-height:40px;
-		border-bottom:1px dashed #666;
+		width: 60%;
+		margin-left: 0px;
+		height: 40px;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 40px;
+		border-bottom: 1px dashed #666;
+	}
+	p{
+		font-size: 14px;
+		line-height: 1.8;
+		margin: 10px auto;
 	}
 }
 
 
-@media screen and (max-width:930px){
-	.avatar-box{display:none;}
-	.contact-box{width:100%;}
+@media screen and (max-width: 930px){
+	.avatar-box{display: none;}
+	.contact-box{width: 100%;}
 }
 
-@media screen and (max-width:750px){
+@media screen and (max-width: 750px){
 	.skill_des{
-		width:100%;
+		width: 100%;
 	}
 	.skill_chart{
-		display:none;
+		display: none;
 	}
 	.content{
-		margin:30px auto;
+		margin: 30px auto;
 	}
 	.work{
-		width:90%;
+		width: 90%;
 	}
 }
-@media screen and (max-width:720px) and (min-width:500px){
+@media screen and (max-width: 720px) and (min-width: 500px){
 	.project{
-		width:360px;
-		min-width:360px;
+		width: 360px;
+		min-width: 360px;
 	}
 }
-@media screen and (max-width:500px){
+@media screen and (max-width: 500px){
 	.project{
-		width:180px;
-		min-width:180px;
-		overflow-y:scroll;
+		width: 180px;
+		min-width: 180px;
+		overflow-y: scroll;
 	}
 }
-@media screen and (max-height:500px){
+@media screen and (max-height: 500px){
 	.home{
-		margin:20px auto;
+		margin: 20px auto;
 	}
 	.home .name{
-		margin:10px auto;
+		margin: 10px auto;
 	}
 }
-@media screen and (min-height:800px){
+@media screen and (min-height: 800px){
 	.avatar-box, .contact-box{
-		padding-top:100px;
+		padding-top: 100px;
 	}
 }

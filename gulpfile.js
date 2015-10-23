@@ -28,7 +28,7 @@ gulp.task('uglify', function(){
 //copy fonts file
 gulp.task('copy', function(){
 	gulp.src('css/fonts/*.*')
-			.pipe(gulp.dest('../www/css/fonts/', {overrite: true}))
+			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}))
 })
 
 //compile jade
