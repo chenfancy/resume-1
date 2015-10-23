@@ -15,5 +15,5 @@ update: main
 	git commit -a -m '$(m)'
 	git push origin temp:master -f &&\
 	cd ../www &&\
-	git commit -a -m '$(m)'
+	-git commit -a -m '$(m)'
 	git push origin temp:gh-pages -f
