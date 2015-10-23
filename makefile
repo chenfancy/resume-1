@@ -12,6 +12,6 @@ www:
 
 	
 update: main
-	git add -A && git commit -m 'update' && git push origin temp:master -f
+	git commit -a -m 'update' && git push origin temp:master -f
 	cd ../www
-	git add -A && git commit -m 'update' && git push origin temp:gh-pages -f
+	git commit -a -m 'update' && git push origin temp:gh-pages -f
