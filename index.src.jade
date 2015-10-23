@@ -21,7 +21,7 @@ html(lang='en')
 					div.content.home
 						div.avatar-box
 							div.avatar-container
-								include mod/me.svg
+								include mod/svg/me.svg
 								img(src='img/me.png', alt='头像')
 						div.contact-box
 							h1.name.center.f48= name
@@ -34,8 +34,7 @@ html(lang='en')
 									span= mail
 								li
 									i.icon-qq
-									span
-										a(href='tencent://message/?uin='+ qq + '&Site=qq&Menu=yes target=_self')= qq
+									span= qq
 								li
 									i.icon-github
 									span

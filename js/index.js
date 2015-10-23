@@ -33,7 +33,6 @@ window.onload = function(){
 			for(var i=0, temp=''; i<n; i++) temp+='<li></li>';
 			return temp;
 		})();
-		nav.style.cssText = "left:"+(cube.width-nav.offsetWidth)/2+"px; top:"+(cube.height-20)+"px";
 		navLi[cube.cur].className = "active";
 
 
@@ -51,7 +50,6 @@ window.onload = function(){
 			.bind(document, "keydown", wheel)
 			.bind(window, "resize", function(){
 				adjust();
-				nav.style.cssText = "left:"+(cube.width-nav.offsetWidth)/2+"px; top:"+(cube.height-20)+"px";
 			})
 			//点击前进后退触发事件处理程序
 			.bind(window, 'popstate', function(e){

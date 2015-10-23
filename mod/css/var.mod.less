@@ -1,0 +1,143 @@
+
+//存放所有变量和函数
+
+@color: #555;
+@hcolor: #08f;
+@font-m: 14px;
+@font-s: 12px;
+@font-b: 16px;
+@font-family: arial, verdana, microsoft yahei;
+
+
+@min-width: 320px;
+
+@max-pad-width: 1280px;
+
+@max-phone-height: 736px;
+
+
+
+.bg(@color: #fff){
+	background: @color;
+}
+
+.bc(@color: #fff){
+	background-color: @color;
+}
+.bg-size(@p: 100% 100%){
+	background-size: @p;
+}
+
+.fade(@time: .3s){
+	transition-duration: @time;
+	-webkit-transition-duration: @time;
+	-moz-transition-duration: @time;
+}
+
+.br(@radius: 5px){
+	border-radius: @radius;
+}
+
+.border(@p: 1px solid #999){
+	border: @p;
+}
+.border-l(@p: 1px solid #ccc){
+	border-left: @p;
+}
+.border-r(@p: 1px solid #ccc){
+	border-right: @p;
+}
+.border-t(@p: 1px solid #ccc){
+	border-top: @p;
+}
+.border-b(@p: 1px solid #ccc){
+	border-bottom: @p;
+}
+
+.bs(@p: 0 0 3px #333){
+	box-shadow: @p;
+}
+
+
+
+.abs(){
+	position: absolute;
+}
+
+.rel(){
+	position: relative;
+}
+
+.fixed(){
+	position: fixed;
+}
+
+.block(){
+	display: block;
+}
+
+.bold(){
+	font-weight: bold;
+}
+
+.tf(@param){
+	transform: @param;
+	-webkit-transform: @param;
+	-moz-transform: @param;
+	-ms-transform: @param;
+}
+
+.tf-org(@param){
+	transform-origin: @param;
+	-webkit-transform-origin: @param;
+	-moz-transform-origin: @param;
+	-ms-transform-origin: @param;
+}
+
+.ts(@param){
+	transform-style: @param;
+	-webkit-transform-style: @param;
+	-moz-transform-style: @param;
+}
+
+.persp(@param){
+	-webkit-perspective: @param;
+	perspective: @param;
+}
+
+
+.pointer(){
+	cursor: pointer;
+}
+.noline(){
+	text-decoration: none;
+}
+
+.omit(){
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.fit:after{
+		content: '.';
+		clear: both;
+		visibility: hidden;
+		display: block;
+		height: 0;
+}
+.fit(){
+	&:after{
+		content: '.';
+		clear: both;
+		visibility: hidden;
+		display: block;
+		height: 0;
+	}
+}
+
+
+
+
+
+

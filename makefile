@@ -14,5 +14,5 @@ commit:
 push:
 	git push origin temp:master -f
 
-update:
+up:
 	git add -A && git commit -m 'update' && git push origin temp:master -f

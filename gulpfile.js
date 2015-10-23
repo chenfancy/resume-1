@@ -28,18 +28,18 @@ gulp.task('uglify', function(){
 //copy fonts file
 gulp.task('copy', function(){
 	gulp.src('css/fonts/*.*')
-		.pipe(gulp.dest('../www/css/fonts/', {overrite: true}))
+			.pipe(gulp.dest('../www/css/fonts/', {overrite: true}))
 })
 
 //compile jade
 gulp.task('jade', function(){
 	gulp.src(['**/*.src.jade'])
-		.pipe(jade({pretty: false}))
-		.pipe(rename(function(path){
-			path.basename = path.basename.replace(/\.src$/, '');
-			path.extname = '.html'
-		}))
-		.pipe(gulp.dest('../www'))
+			.pipe(jade({pretty: false}))
+			.pipe(rename(function(path){
+				path.basename = path.basename.replace(/\.src$/, '');
+				path.extname = '.html'
+			}))
+			.pipe(gulp.dest('../www'))
 })
 
 
