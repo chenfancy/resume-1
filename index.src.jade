@@ -17,14 +17,14 @@ html(lang='en')
 	body
 		div#stage
 			div#cube
-				div.face.face_home
+				div.face.face_home.fit
 					div.content.home
 						div.avatar-box
 							div.avatar-container
 								include mod/svg/me.svg
 								img(src='img/me.png', alt='头像')
 						div.contact-box
-							h1.name.center.f48= name
+							h1.name.center= name
 							ul.contact.auto
 								li
 									i.icon-phone
@@ -59,7 +59,8 @@ html(lang='en')
 									div
 										i
 				div.face.face_project
-					div.content.project
+					div.content.project.fit
+						h2.title(style='color: #fff') 部分个人项目
 						- each v, i in project
 							div
 								a(href= v.href||'javascript:;')
@@ -69,7 +70,7 @@ html(lang='en')
 									!= v.des
 				div.face.face_work
 					div.content.work
-						h2.w_title(style='color: #fff') 3D作品
+						h2.title(style='color: #fff') 部分3D作品
 						ul.w_ul
 							li
 							li
@@ -77,7 +78,7 @@ html(lang='en')
 							li
 							li
 				div.face.face_info
-					div.content.info
+					div.content.info.fit
 						- each v, i in info
 							div
 								h2= v.title
