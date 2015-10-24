@@ -6,6 +6,17 @@ var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 
+var markdown = require('gulp-markdown');
+
+
+// gulp.task('md', function(){
+// 	gulp.src(['mod/md/*.md'])
+// 			.pipe(markdown())
+// 			.pipe(gulp.dest('mod/html'), {overwrite: true});
+// });
+
+
+
 
 //compile less
 gulp.task('less', function(){
