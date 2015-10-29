@@ -49,8 +49,9 @@ html(lang='en')
 				div.face.face_skill
 					div.content.skill.fit
 						div.skill_des
-							- each v, i in skill_des
-								p!= v
+							include data/skill.html
+							// - each v, i in skill_des
+								//- p!= v
 						ul.skill_chart
 							each v, a in skill_chart
 								li

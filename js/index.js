@@ -55,6 +55,7 @@ window.onload = function(){
 			.bind(window, 'popstate', function(e){
 				var state = e.state;
 				changePage(cube.cur=state.cur);
+				e = null;
 			});
 
 		//让cube自适应
@@ -94,7 +95,7 @@ window.onload = function(){
 			else if(delta<0) changePage(--cube.cur);
 			
 			changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
-			
+			e = null;
 		}
 
 		//统一兼容行处理函数

@@ -26,19 +26,20 @@ html(lang='en')
 						i.icon-email
 						= email
 					dd
-						i.icon-qq
-						= qq
-					dd
 						i.icon-github
 						a(href= github) github
 					dd
 						i.icon-lofter
 						a(href= lofter) lofter
+					dd
+						i.icon-location
+						= location
 
 			
 			div.face.skill
-				- each v, i in skill_des
-					p!= v
+				include ../data/skill.html
+				// - each v, i in skill_des
+					//- p!= v
 
 			div.face.skill-chart
 				div.chart
