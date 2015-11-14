@@ -9,10 +9,10 @@ html(lang='en')
 		meta(name='renderer', content='webkit')
 		link(rel='stylesheet', id='link')
 		script(src='js/fn.min.js')
-		script if(browser.mobile) location.href = "/mobile";
+		script if(fn.browser.mobile) location.href = "/mobile";
 		script.
 			var bgUrl = "#{bgUrl}";
-			document.write("<link rel='stylesheet' href='"+ (browser.support ? 'css/index.css' : 'css/old.css') +"'>");
+			document.write("<link rel='stylesheet' href='"+ (fn.browser.support ? 'css/index.css' : 'css/old.css') +"'>");
 		link(rel='stylesheet', href='css/icon.css') 
 	body
 		div#stage
@@ -95,7 +95,7 @@ html(lang='en')
 			img(src='img/fork.png')
 
 		script.
-			document.write("\<script src='"+ (browser.support ? 'js/index.min.js' : 'js/old.min.js') +"'\>\</script\>");
+			document.write("\<script src='"+ (fn.browser.support ? 'js/index.min.js' : 'js/old.min.js') +"'\>\</script\>");
 
 
 

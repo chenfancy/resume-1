@@ -159,7 +159,7 @@ var move = {
 	cube.cur = 0;
 	cube.time = 1.5;
 
-	if( !browser.old_ie ){
+	if( !fn.browser.old_ie ){
 		cube.style.webkitTransitionDuration = cube.time+"s";
 		cube.style.transitionDuration = cube.time+"s";		
 	}
@@ -210,7 +210,7 @@ var move = {
 
 	function changePage(page){
 		cube.cur = page = page<0 ? (page%n+n) : page%n;
-		if(browser.old_ie) move.easeOut(cube, {left: page*-cube.width}, cube.time*1000);
+		if(fn.browser.old_ie) move.easeOut(cube, {left: page*-cube.width}, cube.time*1000);
 		else{
 			cube.style.webkitTransform = "translate3d("+page*-cube.width+"px, 0, 0)";
 			cube.style.transform = "translate3d("+page*-cube.width+"px, 0, 0)";
@@ -227,7 +227,7 @@ var move = {
 		nav.style.cssText = "left:"+(cube.width-nav.offsetWidth)/2+"px; top:"+(cube.height-20)+"px";
 		navLi[cube.cur].className = "active";
 
-		if(browser.old_ie) move.easeOut(cube, {left: cube.cur*-cube.width}, cube.time*1000);
+		if(fn.browser.old_ie) move.easeOut(cube, {left: cube.cur*-cube.width}, cube.time*1000);
 		else{
 			cube.style.webkitTransform = "translate3d("+cube.cur*-cube.width+"px, 0, 0)";
 			cube.style.transform = "translate3d("+cube.cur*-cube.width+"px, 0, 0)";
@@ -369,7 +369,7 @@ var move = {
 	})();
 
 
-	if( !browser.support ){
+	if( !fn.browser.support ){
 		var avatarContainer = fn.cls('avatar-container', 'div')[0];
 		avatarContainer.getElementsByTagName('svg')[0].style.display = 'none';
 		avatarContainer.getElementsByTagName('img')[0].style.opacity = 1;

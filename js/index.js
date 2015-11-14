@@ -70,7 +70,7 @@ window.onload = function(){
 				transform(e, "rotateY("+ i*360/n +"deg) translate3d(0, 0, "+cube.d+"px)");
 			});
 
-			if(browser.mobile) fn.cls('skill_des')[0].style.width = '100%';
+			if(fn.browser.mobile) fn.cls('skill_des')[0].style.width = '100%';
 
 		}
 
@@ -187,15 +187,15 @@ window.onload = function(){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
 					var num = +fn.get(o, 'n');
 					show.style.display = 'block';
-					show.scrollTop = fn.position(showImg[num]).top-30;	
+					show.scrollTop = fn.pos(showImg[num]).top - 30;	
 				}
 			})
 			.bind(show, 'mousemove', function(e){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
 					var index = +fn.get(o, 'i');
-					var n = Math.floor( (e.clientX - fn.position(o).left)*allUrl[index].length/o.offsetWidth );
-					n = Math.max(0, Math.min(allUrl[index].length-1, n));
+					var n = Math.floor( (e.clientX - fn.pos(o).left)*allUrl[index].length/o.offsetWidth );
+					n = Math.max(0, Math.min(allUrl[index].length - 1, n));
 					o.src = allUrl[index][n];
 				}
 			})
@@ -261,7 +261,7 @@ window.onload = function(){
 	})();
 
 
-	if( browser.support ){
+	if( fn.browser.support ){
 		fn.img([bgUrl], function(over){
 			if(over){
 				var bg = document.createElement('img');
@@ -291,7 +291,7 @@ window.onload = function(){
 						svg.style.opacity = v;
 					}, function(){
 						svg.parentNode.removeChild(svg);
-					})
+					});
 					fn.move([0, 1], 2000, function(v){
 						avatar.style.opacity = v;
 					})
