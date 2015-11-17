@@ -28,10 +28,17 @@ gulp.task('uglify', function(){
 		.pipe(gulp.dest('../www/', {overwrite: true}));
 })
 
-//copy fonts file
+//copy fonts and images and CNAME
 gulp.task('copy', function(){
 	gulp.src('css/fonts/*.*')
-			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}))
+			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}));
+
+	//copy images
+	gulp.src('img/**/*.*', {base: './'})
+			.pipe(gulp.dest('../www/', {overwrite: true}));
+
+	gulp.src('CNAME')
+			.pipe(gulp.dest('../www/', {overwrite: true}));
 })
 
 //compile jade
