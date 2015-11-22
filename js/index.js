@@ -23,7 +23,7 @@ window.onload = function(){
 
 		//根据face数量的不同, 设置旋转时间
 		cube.style.webkitTransitionDuration = cube.time+"s";
-		cube.style.transitionDuration = cube.time+"s";	
+		cube.style.transitionDuration = cube.time+"s";
 		
 		adjust();
 		changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
