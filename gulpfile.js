@@ -8,10 +8,6 @@ var rename = require('gulp-rename');
 
 var fileinclude = require('gulp-file-include');
 
-
-
-
-
 //compile less
 gulp.task('less', function(){
 	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*'])
@@ -36,7 +32,7 @@ gulp.task('copy', function(){
 			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}));
 
 	//copy images
-	gulp.src('img/**/*.*', {base: './'})
+	gulp.src(['img/**/*.(jpg|png|gif)'], {base: './'})
 			.pipe(gulp.dest('../www/', {overwrite: true}));
 
 	gulp.src('CNAME')
@@ -54,9 +50,6 @@ gulp.task('jade', function(){
 			.pipe(fileinclude())	//引入skill_chart中的svg
 			.pipe(gulp.dest('../www'))
 });
-
-
-
 
 
 gulp.task('default', function(){

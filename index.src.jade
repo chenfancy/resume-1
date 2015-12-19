@@ -56,8 +56,8 @@ html(lang='en')
 							each v, a in skill_chart
 								li
 									i(k= a + '-' + v)
+											//- 因为jade不能动态include
 											|@@include('img/svg/#{a}.svg')
-										//- img(src= 'img/svg/' + a + '.svg')
 									div
 										i(style='width: #{v}%')
 				div.face.face_project
