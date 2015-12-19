@@ -4,13 +4,13 @@
 <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
 <g id="XMLID_1_">
-	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="20.0005" y1="39.501" x2="20.0005" y2="0.4995">
+	<linearGradient id="svg_maya" gradientUnits="userSpaceOnUse" x1="20.0005" y1="39.501" x2="20.0005" y2="0.4995">
 		<stop  offset="0" style="stop-color:#323232"/>
 		<stop  offset="0.2788" style="stop-color:#4B4B4B"/>
 		<stop  offset="0.7758" style="stop-color:#B3B3B3"/>
 		<stop  offset="0.9636" style="stop-color:#C8C8C8"/>
 	</linearGradient>
-	<circle fill="url(#SVGID_1_)" cx="20" cy="20" r="19.5"/>
+	<circle fill="url(#svg_maya)" cx="20" cy="20" r="19.5"/>
 </g>
 <g>
 	<path fill="#FFFFFF" d="M9.806,18.998l0.129-0.29c1.014-2.286,1.748-3.771,2.204-4.458c0.073-0.095,0.135-0.168,0.187-0.222

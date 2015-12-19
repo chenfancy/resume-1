@@ -5,13 +5,13 @@
 	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
 <g id="XMLID_1_">
 	
-		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.416" y1="20" x2="39.8457" y2="20" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
+		<linearGradient id="svg_js" gradientUnits="userSpaceOnUse" x1="0.416" y1="20" x2="39.8457" y2="20" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
 		<stop  offset="0" style="stop-color:#D21E3C"/>
 		<stop  offset="0.4545" style="stop-color:#D21E3C"/>
 		<stop  offset="0.497" style="stop-color:#E65A6E"/>
 		<stop  offset="1" style="stop-color:#E65A6E"/>
 	</linearGradient>
-	<circle fill="url(#SVGID_1_)" cx="20" cy="20" r="19.5"/>
+	<circle fill="url(#svg_js)" cx="20" cy="20" r="19.5"/>
 </g>
 <g>
 	<path fill="#FFFFFF" d="M17.971,13.287l-0.235,5.247l-0.165,5.259c-0.055,2.188-0.11,3.502-0.165,3.941

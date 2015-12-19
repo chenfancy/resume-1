@@ -5,11 +5,11 @@
 	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
 <g id="XMLID_1_">
 	
-		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="8.6548" y1="35.8633" x2="31.3435" y2="4.1399" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
+		<linearGradient id="svg_nodejs" gradientUnits="userSpaceOnUse" x1="8.6548" y1="35.8633" x2="31.3435" y2="4.1399" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
 		<stop  offset="0" style="stop-color:#64D532"/>
 		<stop  offset="0.8606" style="stop-color:#3C7800"/>
 	</linearGradient>
-	<circle fill="url(#SVGID_1_)" cx="20" cy="20" r="19.5"/>
+	<circle fill="url(#svg_nodejs)" cx="20" cy="20" r="19.5"/>
 </g>
 <g>
 	<path fill="#007213" d="M2.929,23.682c0.067-0.636,0.119-1.35,0.154-2.141l0.122-2.61c0.042-0.945,0.063-1.784,0.063-2.52

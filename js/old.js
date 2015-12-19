@@ -239,7 +239,7 @@ var move = {
 })();
 
 
-(function(){
+/*(function(){
 	//技能页
 	var skill_chart = fn.cls('skill_chart')[0],
 		I = fn.tag('i', skill_chart),
@@ -250,7 +250,7 @@ var move = {
 		skill_icon[i].style.backgroundPosition = "0px "+ i*-40 +"px";
 		skill_score[i].style.width = +fn.get(skill_icon[i], 'k').split('-')[1] + "%";
 	}
-})();
+})();*/
 
 
 (function(){

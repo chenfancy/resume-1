@@ -56,9 +56,10 @@ html(lang='en')
 							each v, a in skill_chart
 								li
 									i(k= a + '-' + v)
-										img(src= 'img/svg/' + a + '.svg')
+											|@@include('img/svg/#{a}.svg')
+										//- img(src= 'img/svg/' + a + '.svg')
 									div
-										i
+										i(style='width: #{v}%')
 				div.face.face_project
 					div.content.project.fit
 						h2.title(style='color: #fff') 部分个人项目

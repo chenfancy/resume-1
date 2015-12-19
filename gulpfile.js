@@ -6,6 +6,8 @@ var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 
+var fileinclude = require('gulp-file-include');
+
 
 
 
@@ -49,8 +51,12 @@ gulp.task('jade', function(){
 				path.basename = path.basename.replace(/\.src$/, '');
 				path.extname = '.html'
 			}))
+			.pipe(fileinclude())	//引入skill_chart中的svg
 			.pipe(gulp.dest('../www'))
-})
+});
+
+
+
 
 
 gulp.task('default', function(){

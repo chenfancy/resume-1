@@ -5,12 +5,12 @@
 	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
 <g id="XMLID_1_">
 	
-		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0.7603" y1="23.1943" x2="39.2393" y2="16.8052" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
+		<linearGradient id="svg_php" gradientUnits="userSpaceOnUse" x1="0.7603" y1="23.1943" x2="39.2393" y2="16.8052" gradientTransform="matrix(0.8134 -0.5817 0.5817 0.8134 -7.9014 15.3659)">
 		<stop  offset="0" style="stop-color:#321E96"/>
 		<stop  offset="0.4727" style="stop-color:#140064"/>
 		<stop  offset="0.5091" style="stop-color:#4E2684"/>
 	</linearGradient>
-	<circle fill="url(#SVGID_1_)" cx="20" cy="20" r="19.5"/>
+	<circle fill="url(#svg_php)" cx="20" cy="20" r="19.5"/>
 </g>
 <g>
 	<path fill="#FFFFFF" d="M5.713,27c0.135-1.5,0.256-3.445,0.364-5.833c0.108-2.389,0.162-4.328,0.162-5.817
