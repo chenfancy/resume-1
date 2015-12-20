@@ -283,7 +283,7 @@ window.onload = function(){
 				var path = svg.getElementsByTagName('path');
 				var avatar = avatarContainer.getElementsByTagName('img')[0];
 
-				fn.move([2100, 950], 12000, function(v){
+				fn.move([2100, 620], 12000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
