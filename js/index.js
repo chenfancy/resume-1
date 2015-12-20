@@ -277,7 +277,7 @@ window.onload = function(){
 			}
 		});
 
-		fn.img(['img/me.png'], function(over){
+		fn.img([config.base + 'img/me.png'], function(over){
 			if(over){
 				var avatarContainer = fn.cls('avatar-container', 'div')[0];
 				var svg = avatarContainer.getElementsByTagName('svg')[0];
