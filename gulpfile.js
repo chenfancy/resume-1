@@ -32,7 +32,7 @@ gulp.task('copy', function(){
 			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}));
 
 	//copy images
-	gulp.src(['img/**/*.(jpg|png|gif)'], {base: './'})
+	gulp.src(['img/**/*.*'], {base: './'})
 			.pipe(gulp.dest('../www/', {overwrite: true}));
 
 	gulp.src('CNAME')
