@@ -57,7 +57,7 @@ html(lang='en')
 								li
 									i(k= a + '-' + v)
 											//- 因为jade不能动态include
-											|@@include('img/svg/#{a}.svg')
+											|@@include('mod/svg/skill/#{a}.svg')
 									div
 										i(style='width: #{v}%')
 				div.face.face_project
@@ -66,7 +66,7 @@ html(lang='en')
 						- each v, i in project
 							div
 								a(href= v.href||'javascript:;')
-									img(src= v.img)
+									|@@include('mod/svg/project/#{v.title}.svg')
 								p.p_des
 									a.b(href= v.href||'javascript:;')= v.name
 									!= v.des
