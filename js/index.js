@@ -187,7 +187,6 @@ window.onload = function(){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
 					var num = +fn.get(o, 'n');
 					show.style.backgroundImage = 'url(../img/close.png)';
-					show.style.
 					show.style.display = 'block';
 					show.scrollTop = fn.pos(showImg[num]).top - 30;	
 				}
