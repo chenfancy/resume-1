@@ -1,3 +1,4 @@
+include data/config.jade
 include data/data.jade
 
 doctype html
@@ -11,6 +12,7 @@ html(lang='en')
 		script(src='js/fn.min.js')
 		script if(fn.browser.mobile) location.href = "/mobile";
 		script.
+			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";
 			document.write("<link rel='stylesheet' href='"+ (fn.browser.support ? 'css/index.css' : 'css/old.css') +"'>");
 		link(rel='stylesheet', href='css/icon.css') 
@@ -21,8 +23,8 @@ html(lang='en')
 					div.content.home
 						div.avatar-box
 							div.avatar-container
-								include mod/svg/me.svg
-								img(src='img/me.png', alt='头像')
+								|@@include('mod/svg/me.svg')
+								img(src=config.base + 'img/me.png', alt='头像')
 						div.contact-box
 							h1.name.center= name
 							ul.contact.auto
@@ -49,9 +51,8 @@ html(lang='en')
 				div.face.face_skill
 					div.content.skill.fit
 						div.skill_des
-							include data/skill.html
-							// - each v, i in skill_des
-								//- p!= v
+							|@@include('data/skill.html')
+
 						ul.skill_chart
 							each v, a in skill_chart
 								li
