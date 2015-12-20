@@ -155,7 +155,7 @@ window.onload = function(){
 				showImg = fn.tag('img', show),
 				temp = '';
 
-		var static_url = 'http://115.28.222.150:8000/';
+		var base = 'http://115.28.222.150:8000/';
 		var url = ['img/work/watch/(frame|viewport|comp).jpg', 
 								'img/work/einstein/(sculpt|frame|rim|comp).jpg', 
 								'img/work/ironman/(frame|occ|rim|sp|comp).jpg',
@@ -168,7 +168,7 @@ window.onload = function(){
 
 		var allUrl = (function(){
 			for(var i = 0, m = url.length, res = []; i < m; i++){
-				res.push( extendUrl(static_url + url[i]).split('|') );
+				res.push( extendUrl(base + url[i]).split('|') );
 			}
 			return res;
 		})();
