@@ -10,11 +10,13 @@ html(lang='en')
 		meta(name='renderer', content='webkit')
 		link(rel='stylesheet', id='link')
 		script(src='js/fn.min.js')
-		script if(fn.browser.mobile) location.href = "/mobile";
+		script.
+			if( !fn.browser.support ) location.href = "/old";
 		script.
 			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";
-			document.write("<link rel='stylesheet' href='"+ (fn.browser.support ? 'css/index.css' : 'css/old.css') +"'>");
+			//- document.write("<link rel='stylesheet' href='"+ (fn.browser.support ? 'css/index.css' : 'css/old.css') +"'>");
+		link(rel="stylesheet", href="css/index.css")
 		link(rel='stylesheet', href='css/icon.css') 
 	body
 		div#stage
@@ -96,8 +98,6 @@ html(lang='en')
 		a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
 			|@@include('mod/svg/fork.svg')
 
-		script.
-			document.write("\<script src='"+ (fn.browser.support ? 'js/index.min.js' : 'js/old.min.js') +"'\>\</script\>");
-
+		script(src="js/index.min.js")
 
 

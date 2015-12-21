@@ -2,7 +2,8 @@
 window.onload = function(){
 	(function(){
 		//旋转, 初始化
-		var cube = fn.id("cube"),
+		var stage = fn.id('stage'),
+			cube = fn.id("cube"),
 			face = fn.filter(cube.childNodes, function(i, e){ return e.nodeType === 1 ? true : false; }),
 			nav = fn.id("nav"),
 			navLi = fn.tag("li", nav);
@@ -16,7 +17,7 @@ window.onload = function(){
 
 		
 		cube.unit = -360/n,								//每次旋转变化的角度
-		cube.cur = Math.max( 0, inArr(param, page) ),	//设置当前页,如果没有参数则默认首页
+		cube.cur = Math.max( 0, page.indexOf(param) ),	//设置当前页,如果没有参数则默认首页
 		cube.a = cube.unit*cube.cur,					//要旋转到的角度
 		cube.time = 0.3*n;
 
@@ -26,7 +27,7 @@ window.onload = function(){
 		cube.style.transitionDuration = cube.time+"s";
 		
 		adjust();
-		changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
+		// changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
 
 		//动态添加nav, 并设置位置,class, 添加click事件
 		nav.innerHTML = (function(){
@@ -40,22 +41,29 @@ window.onload = function(){
 			navLi[i].index = i;
 			fn.bind(navLi[i], "click", function(){
 				changePage(cube.cur = this.index);
-				changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
+				location.hash = '#!' + page[cube.cur];
+				// changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
 			});
 		}
 
 		//设置翻页事件
-		fn.bind(cube, "mousewheel", wheel)
-			.bind(cube, "DOMMouseScroll", wheel)
+		fn.bind(stage, "mousewheel", wheel)
+			.bind(stage, "DOMMouseScroll", wheel)
 			.bind(document, "keydown", wheel)
 			.bind(window, "resize", function(){
 				adjust();
 			})
 			//点击前进后退触发事件处理程序
-			.bind(window, 'popstate', function(e){
-				var state = e.state;
-				changePage(cube.cur=state.cur);
-				e = null;
+			// .bind(window, 'popstate', function(e){
+			// 	var state = e.state;
+			// 	changePage(cube.cur=state.cur);
+			// 	e = null;
+			// })
+			.bind(window, 'hashchange', function() {
+				var n = page.indexOf(location.hash.replace(/^#!/g, ''));
+				if( n > -1 ){
+					changePage(n);
+				}
 			});
 
 		//让cube自适应
@@ -94,7 +102,8 @@ window.onload = function(){
 			if(delta>0) changePage(++cube.cur);
 			else if(delta<0) changePage(--cube.cur);
 			
-			changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
+			location.hash = '#!' + page[cube.cur];
+			// changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
 			e = null;
 		}
 
@@ -114,16 +123,16 @@ window.onload = function(){
 			for(i=0; i<n; i++) navLi[i].className = i===page ? 'active' : '';	
 		}
 
-		function changeUrl(state){
-			state.url = state.url||window.location.href;
-			state.title = state.title||document.title;
-			window.history.pushState(state, state.title, state.url);
-		}
+		// function changeUrl(state){
+		// 	state.url = state.url||window.location.href;
+		// 	state.title = state.title||document.title;
+		// 	window.history.pushState(state, state.title, state.url);
+		// }
 
-		function inArr(v, arr){
-			for(var i=0, m=arr.length; i<m; i++) if(arr[i] === v) return i;
-			return -1;
-		}
+		// function inArr(v, arr){
+		// 	for(var i=0, m=arr.length; i<m; i++) if(arr[i] === v) return i;
+		// 	return -1;
+		// }
 
 	})();
 
@@ -199,6 +208,7 @@ window.onload = function(){
 					n = Math.max(0, Math.min(allUrl[index].length - 1, n));
 					o.src = allUrl[index][n];
 				}
+				e = null;
 			})
 			.bind(show, 'click', function(e){
 				if(this === e.target) show.style.display = 'none';
