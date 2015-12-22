@@ -13,7 +13,7 @@ endif
 main:
 	gulp
 
-update: main
+all: main
 	git add -A
 	git commit -m $(m)
 	git push $(coding) dev:dev -f
@@ -23,6 +23,17 @@ update: main
 		git push $(coding) www:www -f
 	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
 
+dev:
+	git add -A
+	git commit -m $(m)
+	git push $(coding) dev:dev -f
+
+www: main
+	cd ../www;\
+		git add -A;\
+		git commit -m $(m);\
+		git push $(coding) www:www -f
+	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
 
 
 # 只是测试
