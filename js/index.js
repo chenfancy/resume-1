@@ -205,13 +205,16 @@ window.onload = function(){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
 					var serial = +fn.get(o.parentNode, 'serial');
-					var n = Math.floor( (e.clientX - fn.pos(o).left)*loadAllUrl[serial].length/o.offsetWidth );
+					var imgs = fn.tag('*', o.parentNode);
+					// if(imgs.length < loadAllUrl[serial].length) return;
+				  // var n = Math.floor( (e.clientX - fn.pos(o).left)*loadAllUrl[serial].length/o.offsetWidth );
+				  var n = Math.floor( (e.clientX - fn.pos(o).left)*imgs.length/o.offsetWidth );
 					n = Math.max(0, Math.min(loadAllUrl[serial].length - 1, n));
 					if(o.parentNode.n !== n) {
 						//切换图片
 						o.parentNode.n = n;
-						fn.each(fn.tag('*', o.parentNode), function(i, e){
-							e.style.display = fn.get(e, 'no') == n ? 'block' : 'none';
+						fn.each(imgs, function(i, e){
+							e.style.display = i == n ? 'block' : 'none';
 						});
 					}
 				}
@@ -249,7 +252,7 @@ window.onload = function(){
 							fn.set(img, {
 								no: pos[1]
 							});
-							itag[pos[0]].appendChild(img);							
+							itag[pos[0]].insertBefore(img, itag[pos[0]].firstChild);							
 						}
 					}
 				});
