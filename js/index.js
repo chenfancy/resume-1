@@ -161,6 +161,7 @@ window.onload = function(){
 				w_img = fn.tag('img', w_ul);
 
 		var show = fn.id('show'),
+				itag = fn.tag('i', show);
 				showImg = fn.tag('img', show),
 				temp = '';
 
@@ -173,7 +174,7 @@ window.onload = function(){
 						 		'img/work/bmw/comp.jpg',
 						 		'img/work/lowpoly/comp.jpg'
 							];
-
+		var loadAllUrl = [];
 		var allUrl = (function(){
 			for(var i = 0, m = url.length, res = []; i < m; i++){
 				res.push( extendUrl(config.base + url[i]).split('|') );
@@ -194,19 +195,25 @@ window.onload = function(){
 				var o = e.target
 				if(o.tagName === "IMG"){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
-					var num = +fn.get(o, 'n');
+					var num = +fn.get(o, 'serial');
 					show.style.backgroundImage = 'url(../img/close.png)';
 					show.style.display = 'block';
-					show.scrollTop = fn.pos(showImg[num]).top - 30;	
+					show.scrollTop = fn.pos(itag[num]).top - 30;	
 				}
 			})
 			.bind(show, 'mousemove', function(e){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
-					var index = +fn.get(o, 'i');
-					var n = Math.floor( (e.clientX - fn.pos(o).left)*allUrl[index].length/o.offsetWidth );
-					n = Math.max(0, Math.min(allUrl[index].length - 1, n));
-					o.src = allUrl[index][n];
+					var serial = +fn.get(o.parentNode, 'serial');
+					var n = Math.floor( (e.clientX - fn.pos(o).left)*loadAllUrl[serial].length/o.offsetWidth );
+					n = Math.max(0, Math.min(loadAllUrl[serial].length - 1, n));
+					if(o.parentNode.n !== n) {
+						//切换图片
+						o.parentNode.n = n;
+						fn.each(fn.tag('*', o.parentNode), function(i, e){
+							e.style.display = fn.get(e, 'no') == n ? 'block' : 'none';
+						});
+					}
 				}
 				e = null;
 			})
@@ -216,12 +223,47 @@ window.onload = function(){
 
 		//先加载外面显示的图片,,等全部加载完成之后才加载其他图片
 		fn.img(coverUrl, function(over){
+			loadAllUrl.push(allUrl[this.index]);	//将allUrl按cover的加载顺序重排
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
-			w_li[shortIndex(w_li)].innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
-			show.innerHTML += "<i><img n="+this.serial+" i="+this.index+" src='"+ this.src +"'/></i>";
+			w_li[shortIndex(w_li)].innerHTML += [
+				'<i>',
+					'<img serial="', this.serial,'" src="', this.src, '"/>',
+				'</i>'
+			].join('');
 
-			if(over) fn.img([].concat.apply([], allUrl));
+			show.innerHTML += [
+				'<i serial="', this.serial, '">',
+					'<img src="', this.url, '" no="', (allUrl[this.index].length-1), '"/>',
+				'</i>'
+			].join('');
+
+			//封面图片加载完成之后
+			if(over) {
+				fn.img(Array.prototype.concat.apply([], allUrl), function(over){
+					if( coverUrl.indexOf(this.url) === -1 ) {
+						var pos = matrixPos(this.url, loadAllUrl);
+						if(pos){
+							var img = document.createElement('img');
+							img.style.display = 'none';
+							img.src = this.url;
+							fn.set(img, {
+								no: pos[1]
+							});
+							itag[pos[0]].appendChild(img);							
+						}
+					}
+				});
+			}
 		});
+
+		//得到元素在二维数组中的位置
+		function matrixPos(e, matrix) {
+			for(var i = 0, m = matrix.length, tmp; i < m; i++) {
+				tmp = matrix[i].indexOf(e);
+				if( tmp >= 0 ) return [i, tmp];
+			}
+			return null;
+		}
 
 
 

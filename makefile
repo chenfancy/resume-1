@@ -21,10 +21,15 @@ dev:
 	git push $(coding) dev:dev -f
 
 www: main
-	cd ../www;\
-		git add -A;\
+	cd ../www &&\
+		git add -A &&\
 		git commit -m $(m);\
 		git push $(coding) www:www -f
+	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
+
+bak: main dev www
+
+sync-page:
 	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
 
 

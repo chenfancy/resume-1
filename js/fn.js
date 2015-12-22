@@ -82,7 +82,11 @@
 		},
 
 		set: function(obj, key, value){
-			return obj.setAttribute(key, value);
+			if(typeof key === 'object') {
+				for(var a in key) {
+					obj.setAttribute(a, key[a]);
+				}
+			} else obj.setAttribute(key, value);
 		},
 
 		rm: function(attr){
@@ -106,6 +110,7 @@
 			for(var i=0, m=urlArr.length; i<m; i++){
 				oImg.push(new Image());
 				oImg[i].index = i;
+				oImg[i].url = urlArr[i];
 				oImg[i].src = urlArr[i];
 				oImg[i].onload = oImg[i].onerror = function(){
 					if(fn){
