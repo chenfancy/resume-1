@@ -243,6 +243,7 @@ window.onload = function(){
 			//封面图片加载完成之后
 			if(over) {
 				fn.img(Array.prototype.concat.apply([], allUrl), function(over){
+					//当前加载完的图片必须不是coverUrl中的, coverUrl上面已经加载完成了, 避免重复添加img
 					if( coverUrl.indexOf(this.url) === -1 ) {
 						var m, n;
 						var pos = matrixPos(this.url, loadAllUrl);
