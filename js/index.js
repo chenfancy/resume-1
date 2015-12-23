@@ -193,7 +193,7 @@ window.onload = function(){
 			.bind(w_ul, 'DOMMouseScroll', cancelBubble)
 			.bind(w_ul, 'click', function(e){
 				var o = e.target
-				if(o.tagName === "IMG"){
+				if(o.tagName === 'IMG'){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
 					var num = +fn.get(o, 'serial');
 					show.style.backgroundImage = 'url(../img/close.png)';
