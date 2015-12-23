@@ -12,7 +12,9 @@
 
 	Fn.prototype = {
 		each: function(arr, fn){
-			for(var i = 0, m = arr.length; i < m; i++) fn.call(arr[i], i, arr[i]);
+			for(var i = 0, m = arr.length; i < m; i++){
+				if(fn.call(arr[i], i, arr[i]) === false) return false;
+			}
 		},
 
 		filter: function(arr, fn){

@@ -244,15 +244,26 @@ window.onload = function(){
 			if(over) {
 				fn.img(Array.prototype.concat.apply([], allUrl), function(over){
 					if( coverUrl.indexOf(this.url) === -1 ) {
+						var m, n;
 						var pos = matrixPos(this.url, loadAllUrl);
-						if(pos){
+						if(m = pos[0], n = pos[1], pos){
+							var I = itag[m];
+							var imgs = fn.tag('img', I);
+
 							var img = document.createElement('img');
 							img.style.display = 'none';
 							img.src = this.url;
 							fn.set(img, {
-								no: pos[1]
+								no: n
 							});
-							itag[pos[0]].insertBefore(img, itag[pos[0]].firstChild);							
+
+							//让所有图片根据no的顺序排列在i标签中, no是url中同一个文件夹类图片的顺序
+							for(var i = 0, m = imgs.length; i < m; i++) {
+								if(n < fn.get(imgs[i], 'no')) {
+									I.insertBefore(img, imgs[i]);
+									break;
+								}
+							}						
 						}
 					}
 				});
@@ -267,11 +278,6 @@ window.onload = function(){
 			}
 			return null;
 		}
-
-
-
-
-
 
 		function cancelBubble(e){
 			e = e||window.event;
