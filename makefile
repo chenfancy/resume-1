@@ -21,10 +21,14 @@ dev:
 	git push $(coding) dev:dev -f
 
 www:
-	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
+	cd ../www &&\
+		git add -A &&\
+		git commit -m $(m);\
+		git push $(coding) www:www -f
 
 sync:
 	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
+
 
 all: production dev www sync
 bak: production dev www
