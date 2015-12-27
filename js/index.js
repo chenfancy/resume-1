@@ -195,7 +195,7 @@ window.onload = function(){
 				var o = e.target
 				if(o.tagName === 'IMG'){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
-					var num = +fn.get(o, 'serial');
+					var num = +o.dataset.serial;
 					show.style.backgroundImage = 'url(../img/close.png)';
 					show.style.display = 'block';
 					show.scrollTop = fn.pos(itag[num]).top - 30;	
@@ -204,7 +204,7 @@ window.onload = function(){
 			.bind(show, 'mousemove', function(e){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
-					var serial = +fn.get(o.parentNode, 'serial');
+					var serial = +o.parentNode.dataset.serial;
 					var imgs = fn.tag('*', o.parentNode);
 					// if(imgs.length < loadAllUrl[serial].length) return;
 				  // var n = Math.floor( (e.clientX - fn.pos(o).left)*loadAllUrl[serial].length/o.offsetWidth );
@@ -230,13 +230,13 @@ window.onload = function(){
 			//如果是前几张就按照顺序排列, 第二行就按照哪个短排列哪个
 			w_li[shortIndex(w_li)].innerHTML += [
 				'<i>',
-					'<img serial="', this.serial,'" src="', this.src, '"/>',
+					'<img data-serial="', this.serial,'" src="', this.src, '"/>',
 				'</i>'
 			].join('');
 
 			show.innerHTML += [
 				'<i serial="', this.serial, '">',
-					'<img src="', this.url, '" no="', (allUrl[this.index].length-1), '"/>',
+					'<img src="', this.url, '" data-no="', (allUrl[this.index].length-1), '"/>',
 				'</i>'
 			].join('');
 
@@ -260,7 +260,7 @@ window.onload = function(){
 
 							//让所有图片根据no的顺序排列在i标签中, no是url中同一个文件夹类图片的顺序
 							for(var i = 0, m = imgs.length; i < m; i++) {
-								if(n < fn.get(imgs[i], 'no')) {
+								if(n < imgs[i].dataset.no) {
 									I.insertBefore(img, imgs[i]);
 									break;
 								}
