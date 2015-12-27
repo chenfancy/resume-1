@@ -22,6 +22,7 @@ gulp.task('less', function(){
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
 		.pipe(gulpif(process.env.TARGET === 'uglify', uglify()))
+		// .pipe(process.env.TARGET === 'uglify' ? uglify() :   )
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
