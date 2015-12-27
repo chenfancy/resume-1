@@ -192,10 +192,12 @@ window.onload = function(){
 		fn.bind(w_ul, 'mousewheel', cancelBubble)
 			.bind(w_ul, 'DOMMouseScroll', cancelBubble)
 			.bind(w_ul, 'click', function(e){
-				var o = e.target
+				var o = e.target;
 				if(o.tagName === 'IMG'){
 					//将n得到, n代表第几个加载完成,从0开始, i代表在url中位于第几个
 					var num = +o.dataset.serial;
+					if(!(num < +Infinity)) return;	//防止num为NaN出错
+
 					show.style.backgroundImage = 'url(../img/close.png)';
 					show.style.display = 'block';
 					show.scrollTop = fn.pos(itag[num]).top - 30;	
@@ -205,6 +207,8 @@ window.onload = function(){
 				var o = e.target;
 				if( o.tagName === 'IMG'){
 					var serial = +o.parentNode.dataset.serial;
+					if(!(serial < +Infinity)) return;
+
 					var imgs = fn.tag('*', o.parentNode);
 					// if(imgs.length < loadAllUrl[serial].length) return;
 				  // var n = Math.floor( (e.clientX - fn.pos(o).left)*loadAllUrl[serial].length/o.offsetWidth );
@@ -235,7 +239,7 @@ window.onload = function(){
 			].join('');
 
 			show.innerHTML += [
-				'<i serial="', this.serial, '">',
+				'<i data-serial="', this.serial, '">',
 					'<img src="', this.url, '" data-no="', (allUrl[this.index].length-1), '"/>',
 				'</i>'
 			].join('');

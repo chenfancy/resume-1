@@ -7,27 +7,29 @@ path=server/resume
 
 ifeq ($(m),)
 	m=up
-endif
+endif	
 
-
-main:
+test:
 	gulp
 
-all: main dev www
+production:
+	TARGET=uglify gulp
+
+all: production dev www
 
 dev:
 	git add -A
 	git commit -m $(m)
 	git push $(coding) dev:dev -f
 
-www: main
+www: production
 	cd ../www &&\
 		git add -A &&\
 		git commit -m $(m);\
 		git push $(coding) www:www -f
 	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'
 
-bak: main dev www
+bak: production dev www
 
 sync-page:
 	ssh $(flfhost) 'cd $(path); git pull $(coding) www:www -f'

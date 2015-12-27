@@ -6,6 +6,8 @@ var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 
+var gulpif = require('gulp-if');
+
 var fileinclude = require('gulp-file-include');
 
 //compile less
@@ -19,7 +21,7 @@ gulp.task('less', function(){
 //compress and rename *.js
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
-		.pipe(uglify())
+		.pipe(gulpif(process.env.TARGET === 'uglify', uglify()))
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
