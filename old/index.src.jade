@@ -1,3 +1,4 @@
+include ../data/config.jade
 include ../data/data.jade
 
 doctype html
@@ -7,167 +8,16 @@ html(lang='en')
 		title= name + '-个人简历'
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 		script.
-			+function(){
-				var ua = window.navigator.userAgent;
-				if( ua.indexOf('Android') === -1 && ua.indexOf('iPad') === -1 && ua.indexOf('iPhone') === -1 ) location.href = "/";
-			}();
+			// +function(){
+			// 	var ua = window.navigator.userAgent;
+			// 	if( ua.indexOf('Android') === -1 && ua.indexOf('iPad') === -1 && ua.indexOf('iPhone') === -1 ) location.href = "/";
+			// }();
 		link(rel='stylesheet', href='css/index.css')
 		link(rel='stylesheet', href='../css/icon.css')
 	body
-		div#box
-			div.face.home
-				img(src='../img/avatar.png', class='avatar')
-				dl.contact
-					dt= name
-					dd
-						i.icon-phone
-						= phone
-					dd
-						i.icon-email
-						= email
-					dd
-						i.icon-github
-						a(href= github) github
-					dd
-						i.icon-lofter
-						a(href= lofter) lofter
-					dd
-						i.icon-location
-						= location
+		div#cv
+			div.left
+				|范林峰
 
-			
-			div.face.skill
-				include ../data/skill.html
-				// - each v, i in skill_des
-					//- p!= v
-
-			div.face.skill-chart
-				div.chart
-
-			div.face.project
-				ul.project-ul
-					- each v, i in project
-						li
-							i
-								img(src= '../' + v.img)
-							div
-								a(href= v.href)!= v.name + v.des
-
-			div.face.info
-				- each v, i in info
-					div.info-kind
-						h2= v.title
-						p!= v.content
-			
-			div.next
-				img(src= '../img/next.png')
-
-		script(src= 'js/jquery.min.js')
-		script(src= 'js/highcharts.js')
-		script.
-			setTimeout(function(){
-				var $face = $('.face').each(function(i, e){ e.n = i; }),
-						face = $face.get(),
-						$chart = $('.chart');
-
-				var p = {
-					cur: 0,
-					z: 1,
-					t: 0.5
-				};
-				
-				document.documentElement.style.fontSize = window.innerHeight/32 + 'px';
-
-				$('.next').css({
-					left: (window.innerWidth-50)/2,
-					top: window.innerHeight-40,
-					display: 'block'
-				})
-				.on('click', function(){
-					if(p.running === true) return;				
-					p.running = true;
-					p.cur = p.cur === $face.length - 1 ? 0 : p.cur + 1;
-					p.z++;
-
-					$face.eq(p.cur).css('webkitTransitionDuration', '0s')
-					.css({
-						webkitTransform: 'translate3d(0, '+ window.innerHeight +'px, 0)',
-						zIndex: p.z,
-					});
-
-					
-					setTimeout(function(){
-						p.running = false;
-					}, p.t*1000);
-					setTimeout(function(){
-						$face.eq(p.cur).css({
-							webkitTransitionDuration: +p.t + 's',
-							webkitTransform: 'translate3d(0, 0, 0)'
-						});
-						if(p.cur === 2){
-							$chart.highcharts({
-								chart:{
-									type: 'column'
-								},
-								tooltip: {
-									enabled: false
-								},
-								title:{
-									text: '技能表'
-								},
-								credits:{
-									enabled: false
-								},
-								xAxis:{
-									labels:{ enabled: false },
-									type: 'category'
-								},
-								yAxis:{
-									max:100,
-									min: 0,
-									title: '深入程度'
-								},
-								plotOptions:{
-									column:{
-										pointPadding:0.6,
-										pointWidth:8,
-										borderWidth:0
-									}
-								},
-								series:[{
-									name: 'HTML(5)',
-									data: [#{skill_chart.html}]
-								}, {
-									name: 'CSS(3)',
-									data: [#{skill_chart.css}]
-								}, {
-									name: 'js',
-									data: [#{skill_chart.js}]
-								}, {
-									name: 'jQuery',
-									data: [#{skill_chart.jquery}]
-								}, {
-									name: 'Nodejs',
-									data: [#{skill_chart.nodejs}]
-								}, {
-									name: 'D3',
-									data: [#{skill_chart.d3}]
-								}, {
-									name: 'php',
-									data: [#{skill_chart.php}]
-								}, {
-									name: 'MySQL',
-									data: [#{skill_chart.mysql}]
-								}, {
-									name: 'Ps',
-									data: [#{skill_chart.ps}]
-								}, {
-									name: 'MAYA',
-									data: [#{skill_chart.maya}]
-								}]
-							});
-						}
-					}, 50);
-				});
-			}, 500);
+		
 			

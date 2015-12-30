@@ -11,7 +11,7 @@ html(lang='en')
 		link(rel='stylesheet', id='link')
 		script(src='js/fn.min.js')
 		script.
-			if( !fn.browser.support ) location.href = "/old";
+			if(!fn.browser.support) location.href = "/old";
 		script.
 			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";

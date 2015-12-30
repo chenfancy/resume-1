@@ -17,7 +17,7 @@ window.onload = function(){
 
 		
 		cube.unit = -360/n,								//每次旋转变化的角度
-		cube.cur = Math.max( 0, page.indexOf(param) ),	//设置当前页,如果没有参数则默认首页
+		cube.cur = cube.old = Math.max( 0, page.indexOf(param) ),	//设置当前页,如果没有参数则默认首页
 		cube.a = cube.unit*cube.cur,					//要旋转到的角度
 		cube.time = 0.3*n;
 
@@ -117,6 +117,7 @@ window.onload = function(){
 		function changePage(page){
 			cube.cur = page = page<0 ? (page%n+n) : page%n;
 			cube.a = page*cube.unit;
+
 			cube.style.webkitTransform = "translate3d(0, 0, "+ (-cube.d)+"px) rotateY("+cube.a+"deg)";
 			cube.style.transform = "translate3d(0, 0, "+ (-cube.d)+"px) rotateY("+cube.a+"deg)";
 
@@ -349,17 +350,17 @@ window.onload = function(){
 				var path = svg.getElementsByTagName('path');
 				var avatar = avatarContainer.getElementsByTagName('img')[0];
 
-				fn.move([2100, 620], 12000, function(v){
+				fn.move.ease([2100, 620], 12000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
 				}, function(){
-					fn.move([1, 0], 1000, function(v){
+					fn.move.ease([1, 0], 1000, function(v){
 						svg.style.opacity = v;
 					}, function(){
 						svg.parentNode.removeChild(svg);
 					});
-					fn.move([0, 1], 2000, function(v){
+					fn.move.ease([0, 1], 2000, function(v){
 						avatar.style.opacity = v;
 					})
 				})
