@@ -15,9 +15,11 @@ body{
 	.bc(@cv-color);
 	.rel();
 	.br(5px);
+	// overflow: hidden;
 	margin: 20px auto 100px auto;
-	box-sizing: border-box;
-	padding: 20px;
+	padding: 20px 0;
+	font-faily: @font-family;
+	.fit();
 
 	&:before{
 		content: ' ';
@@ -32,10 +34,56 @@ body{
 	}
 }
 
-.left{
+.basic-info{
+	&>*{
+		margin: 20px auto;
+	}
 	width: 30%;
 	border-right: 1px solid #ccc;
-	// height: 500px;
+	height: 500px;
+	// .bc(#D3E7E5);
+	// padding: 20px;
+	float: left;
+	overflow: hidden;
+
+	.avatar{
+		@d: 150px;
+		width: @d;
+		height: @d;
+		.br(@d/2);
+		.bc(#ddd);
+		overflow: hidden;
+		img{
+
+		}
+	}
+	.name{
+		line-height: 1.5;
+		font-size: 20px;
+		color: @color;
+		text-align: center;
+	}
+	ul.contact{
+		width: 150px;
+		margin: auto;
+		&>li{
+			font-size: 16px;
+			@edge: 30px;
+			i{
+				width: @edge;
+				height: @edge;
+				line-height: @edge;
+				float: left;
+				text-align: center;
+			}
+			span{
+				// i标签设置左浮动, span不设置浮动, 因此span默认占满整个li宽度
+				// 但i标签会挤压它, 如果i是absolute则不会挤压
+				display: block;
+				line-height: @edge;
+			}
+		}
+	}
 }
 
 
