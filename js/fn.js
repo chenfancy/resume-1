@@ -158,7 +158,7 @@ function(){
 
 	if( ua.indexOf('Android') > -1 || ua.indexOf('iPad') > -1 || ua.indexOf('iPhone') > -1 ) browser.mobile = true;
 	if( ua.indexOf('Macintosh') > -1 ) browser.mac = true;
-	if( browser.ff || (browser.chrome && browser.v > 35) || browser.mac ) browser.support = true;
+	if( browser.ff || (browser.chrome && browser.v > 31) || browser.mac ) browser.support = true;
 	if( browser.ie && browser.v < 9 ) browser.old_ie = true;
 
 	return browser;
