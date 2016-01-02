@@ -7,14 +7,13 @@ html(lang='en')
 		meta(charset='UTF-8')
 		title= name + '-个人简历'
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		script(src='js/fn.min.js')
 		script.
-			// +function(){
-			// 	var ua = window.navigator.userAgent;
-			// 	if( ua.indexOf('Android') === -1 && ua.indexOf('iPad') === -1 && ua.indexOf('iPhone') === -1 ) location.href = "/";
-			// }();
+			if(fn.browser.support) location.href = "/";
 		link(rel='stylesheet', href='css/index.css')
 		link(rel='stylesheet', href='../css/icon.css')
 	body
+		base(target="_blank")
 		div#cv
 			div.basic-info
 				div.avatar
@@ -25,7 +24,45 @@ html(lang='en')
 						i.icon-phone
 						span=phone
 					li
-						i.
+						i.icon-email
+						span=email
+					li
+						i.icon-weixin
+						span=weixin
+					li
+						i.icon-github
+						span
+							a(href=github) github
+					li
+						i.icon-lofter
+						span
+							a(href=lofter) lofter
+					li
+						i.icon-location
+						span=location
+
+			div.detail
+				div.section
+					h2.section-title 技能简介
+					|@@include('../data/skill.html')
+
+				div.section
+					h2.section-title 部分个人项目
+					- each v, i in project
+						p
+							a(href=v.href)= v.name
+							|  —— 
+							=v.des
+
+				-each v, i in info
+					div.section
+						h2.section-title=v.title
+						p!=v.content
+
+
+
+
+
 				
 				
 

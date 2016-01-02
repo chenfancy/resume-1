@@ -15,7 +15,6 @@ html(lang='en')
 		script.
 			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";
-			//- document.write("<link rel='stylesheet' href='"+ (fn.browser.support ? 'css/index.css' : 'css/old.css') +"'>");
 		link(rel="stylesheet", href="css/index.css")
 		link(rel='stylesheet', href='css/icon.css') 
 	body
@@ -36,6 +35,9 @@ html(lang='en')
 								li
 									i.icon-email
 									span= email
+								li
+									i.icon-weixin
+									span=weixin
 								//- li
 								//- 	i.icon-qq
 								//- 	span= qq
