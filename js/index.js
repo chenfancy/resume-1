@@ -173,7 +173,8 @@ window.onload = function(){
 								'img/work/policeman/(frame|comp).jpg',
 								'img/work/tiger/comp.jpg',
 						 		'img/work/bmw/comp.jpg',
-						 		'img/work/lowpoly/comp.jpg'
+						 		'img/work/lowpoly/comp.jpg',
+						 		'img/work/5s/(frame|edge|wip|comp|comp2|comp3).jpg'
 							];
 		var loadAllUrl = [];
 		var allUrl = (function(){
