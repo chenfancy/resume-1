@@ -4,7 +4,6 @@ window.onload = function(){
 
 	fn.img([bgUrl], function(over){
 		if(over){
-			init();
 			var bg = document.createElement('img');
 			bg.src = this.src;
 			bg.style.cssText = 'position:absolute; opacity:0;';
@@ -18,6 +17,7 @@ window.onload = function(){
 
 	fn.img([config.base + me_url], function(over){
 		if(over){
+			init();
 			var avatarContainer = fn.cls('avatar-container', 'div')[0];
 			var svg = avatarContainer.getElementsByTagName('svg')[0];
 			var path = svg.getElementsByTagName('path');
@@ -26,20 +26,24 @@ window.onload = function(){
 			avatar.style.opacity = 0;
 			avatarContainer.appendChild(avatar);
 
-			fn.move.ease([2100, 1200], 6000, function(v){
-				fn.each(path, function(i, e){
-					e.style.strokeDashoffset = v;	
-				});
-			}, function(){
-				fn.move.ease([1, 0], 1000, function(v){
-					svg.style.opacity = v;
+			setTimeout(function() {
+				fn.move.ease([2100, 1200], 6000, function(v){
+					fn.each(path, function(i, e){
+						e.style.strokeDashoffset = v;	
+					});
 				}, function(){
-					svg.parentNode.removeChild(svg);
+					fn.move.ease([1, 0], 1000, function(v){
+						svg.style.opacity = v;
+					}, function(){
+						svg.parentNode.removeChild(svg);
+					});
+					fn.move.ease([0, 1], 2000, function(v){
+						avatar.style.opacity = v;
+					})
 				});
-				fn.move.ease([0, 1], 2000, function(v){
-					avatar.style.opacity = v;
-				})
-			})
+				
+			}, 1500);
+
 		}
 	});
 
