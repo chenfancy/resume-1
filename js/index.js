@@ -3,18 +3,6 @@ window.onload = function(){
 	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
 	var pathOffset = [2000, 1200];
 
-	fn.img([bgUrl], function(over){
-		if(over){
-			var bg = document.createElement('img');
-			bg.src = this.src;
-			bg.style.cssText = 'position:absolute; opacity:0;';
-			fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
-
-			setTimeout(function(){
-				bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
-			}, 100);
-		}
-	});
 
 	fn.img([config.base + me_url], function(over){
 		if(over){
@@ -51,6 +39,18 @@ window.onload = function(){
 		}
 	});
 
+	fn.img([bgUrl], function(over){
+		if(over){
+			var bg = document.createElement('img');
+			bg.src = this.src;
+			bg.style.cssText = 'position:absolute; opacity:0;';
+			fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
+
+			setTimeout(function(){
+				bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
+			}, 100);
+		}
+	});
 
 	function init(){
 		//旋转, 初始化
