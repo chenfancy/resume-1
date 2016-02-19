@@ -22,7 +22,7 @@ window.onload = function(){
 				e.style.strokeDashoffset = pathOffset[0];	
 			});
 			setTimeout(function() {
-				fn.move.ease(pathOffset, 5000, function(v){
+				fn.move.ease(pathOffset, 6000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
