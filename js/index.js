@@ -7,6 +7,9 @@ window.onload = function(){
 	fn.img([config.base + me_url], function(over){
 		if(over){
 			init();
+			loadBg();
+			set3dWork();
+
 			var avatarContainer = fn.cls('avatar-container', 'div')[0];
 			var svg = avatarContainer.getElementsByTagName('svg')[0];
 			var path = svg.getElementsByTagName('path');
@@ -39,18 +42,21 @@ window.onload = function(){
 		}
 	});
 
-	fn.img([bgUrl], function(over){
-		if(over){
-			var bg = document.createElement('img');
-			bg.src = this.src;
-			bg.style.cssText = 'position:absolute; opacity:0;';
-			fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
+	function loadBg() {
+		fn.img([bgUrl], function(over){
+			if(over){
+				var bg = document.createElement('img');
+				bg.src = this.src;
+				bg.style.cssText = 'position:absolute; opacity:0;';
+				fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
 
-			setTimeout(function(){
-				bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
-			}, 100);
-		}
-	});
+				setTimeout(function(){
+					bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
+				}, 100);
+			}
+		});
+	}
+
 
 	function init(){
 		//旋转, 初始化
@@ -209,7 +215,7 @@ window.onload = function(){
 
 
 
-	(function(){
+	function set3dWork(){
 		//3d作品展示
 		var w_ul = fn.cls('w_ul', 'ul')[0],
 				w_li = fn.tag('li', w_ul),
@@ -381,7 +387,7 @@ window.onload = function(){
 			}
 			return minIndex;
 		}
-	})();
+	};
 
 	document.body.ondragstart = function(){ return false; }
 
