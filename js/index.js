@@ -329,7 +329,7 @@ window.onload = function(){
 		}
 	})();
 
-
+	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
 	if( fn.browser.support ){
 		fn.img([bgUrl], function(over){
 			if(over){
@@ -344,12 +344,15 @@ window.onload = function(){
 			}
 		});
 
-		fn.img([config.base + 'img/me.png'], function(over){
+		fn.img([config.base + me_url], function(over){
 			if(over){
 				var avatarContainer = fn.cls('avatar-container', 'div')[0];
 				var svg = avatarContainer.getElementsByTagName('svg')[0];
 				var path = svg.getElementsByTagName('path');
-				var avatar = avatarContainer.getElementsByTagName('img')[0];
+				var avatar = document.createElement('img');
+				avatar.src = this.src;
+				avatar.style.opacity = 0;
+				avatarContainer.appendChild(avatar);
 
 				fn.move.ease([2100, 1200], 6000, function(v){
 					fn.each(path, function(i, e){
