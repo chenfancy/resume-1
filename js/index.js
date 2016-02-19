@@ -1,6 +1,7 @@
 
 window.onload = function(){
 	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
+	var pathOffset = [2000, 1200];
 
 	fn.img([bgUrl], function(over){
 		if(over){
@@ -26,8 +27,11 @@ window.onload = function(){
 			avatar.style.opacity = 0;
 			avatarContainer.appendChild(avatar);
 
+			fn.each(path, function(i, e){
+				e.style.strokeDashoffset = pathOffset[0];	
+			});
 			setTimeout(function() {
-				fn.move.ease([2100, 1200], 6000, function(v){
+				fn.move.ease(pathOffset, 5000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
@@ -41,7 +45,7 @@ window.onload = function(){
 						avatar.style.opacity = v;
 					})
 				});
-				
+
 			}, 1500);
 
 		}
