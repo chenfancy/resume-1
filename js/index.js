@@ -1,6 +1,50 @@
 
 window.onload = function(){
-	(function(){
+	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
+	if( fn.browser.support ){
+		fn.img([bgUrl], function(over){
+			if(over){
+				init();
+				var bg = document.createElement('img');
+				bg.src = this.src;
+				bg.style.cssText = 'position:absolute; opacity:0;';
+				fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
+
+				setTimeout(function(){
+					bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
+				}, 100);
+			}
+		});
+
+		fn.img([config.base + me_url], function(over){
+			if(over){
+				var avatarContainer = fn.cls('avatar-container', 'div')[0];
+				var svg = avatarContainer.getElementsByTagName('svg')[0];
+				var path = svg.getElementsByTagName('path');
+				var avatar = document.createElement('img');
+				avatar.src = this.src;
+				avatar.style.opacity = 0;
+				avatarContainer.appendChild(avatar);
+
+				fn.move.ease([2100, 1200], 6000, function(v){
+					fn.each(path, function(i, e){
+						e.style.strokeDashoffset = v;	
+					});
+				}, function(){
+					fn.move.ease([1, 0], 1000, function(v){
+						svg.style.opacity = v;
+					}, function(){
+						svg.parentNode.removeChild(svg);
+					});
+					fn.move.ease([0, 1], 2000, function(v){
+						avatar.style.opacity = v;
+					})
+				})
+			}
+		});
+	}
+
+	function init(){
 		//旋转, 初始化
 		var stage = fn.id('stage'),
 			cube = fn.id("cube"),
@@ -135,7 +179,7 @@ window.onload = function(){
 		// 	return -1;
 		// }
 
-	})();
+	}
 
 
 
@@ -156,48 +200,6 @@ window.onload = function(){
 
 
 
-	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
-	if( fn.browser.support ){
-		fn.img([bgUrl], function(over){
-			if(over){
-				var bg = document.createElement('img');
-				bg.src = this.src;
-				bg.style.cssText = 'position:absolute; opacity:0;';
-				fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
-
-				setTimeout(function(){
-					bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
-				}, 100);
-			}
-		});
-
-		fn.img([config.base + me_url], function(over){
-			if(over){
-				var avatarContainer = fn.cls('avatar-container', 'div')[0];
-				var svg = avatarContainer.getElementsByTagName('svg')[0];
-				var path = svg.getElementsByTagName('path');
-				var avatar = document.createElement('img');
-				avatar.src = this.src;
-				avatar.style.opacity = 0;
-				avatarContainer.appendChild(avatar);
-
-				fn.move.ease([2100, 1200], 6000, function(v){
-					fn.each(path, function(i, e){
-						e.style.strokeDashoffset = v;	
-					});
-				}, function(){
-					fn.move.ease([1, 0], 1000, function(v){
-						svg.style.opacity = v;
-					}, function(){
-						svg.parentNode.removeChild(svg);
-					});
-					fn.move.ease([0, 1], 2000, function(v){
-						avatar.style.opacity = v;
-					})
-				})
-			}
-		});
-	}
 
 	(function(){
 		//3d作品展示
@@ -372,7 +374,7 @@ window.onload = function(){
 			return minIndex;
 		}
 	})();
-	
+
 	document.body.ondragstart = function(){ return false; }
 
 }
