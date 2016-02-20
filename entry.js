@@ -1,5 +1,9 @@
 
 window.onload = function(){
+	var fn = require('./js/fn.js');
+	var move = require('./js/move.js');
+
+
 	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
 	var pathOffset = [2000, 1200];
 
@@ -22,22 +26,22 @@ window.onload = function(){
 				e.style.strokeDashoffset = pathOffset[0];	
 			});
 			setTimeout(function() {
-				fn.move.ease(pathOffset, 6000, function(v){
+				move.ease(pathOffset, 6000, function(v){
 					fn.each(path, function(i, e){
 						e.style.strokeDashoffset = v;	
 					});
 				}, function(){
-					fn.move.ease([1, 0], 1000, function(v){
+					move.ease([1, 0], 1000, function(v){
 						svg.style.opacity = v;
 					}, function(){
 						svg.parentNode.removeChild(svg);
 					});
-					fn.move.ease([0, 1], 2000, function(v){
+					move.ease([0, 1], 2000, function(v){
 						avatar.style.opacity = v;
 					})
 				});
 
-			}, 1500);
+			}, 2000);
 
 		}
 	});

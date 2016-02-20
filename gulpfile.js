@@ -5,19 +5,30 @@ var minifyCss = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
+var browserify = require('gulp-browserify');
+// var del = require('gulp-del');
 
 var gulpif = require('gulp-if');
 
 var fileinclude = require('gulp-file-include');
 
+
+// gulp.task('del', function(cb) {
+// 	del([], function() {
+// 		cb();
+// 	})
+// })
+
+
 //compile less
 gulp.task('less', function(){
-	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*'])
+	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*', '!bak/**/*.*'])
 		.pipe(less())
 		.pipe(minifyCss())
 		.pipe(gulp.dest('../www'));
 });
 
+/*
 //compress and rename *.js
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
@@ -27,6 +38,20 @@ gulp.task('uglify', function(){
 			path.basename += '.min';
 		}))
 		.pipe(gulp.dest('../www/', {overwrite: true}));
+})
+*/
+
+gulp.task('pack', function() {
+	gulp.src('./entry.js')
+			.pipe(browserify({
+
+			}))
+			.pipe(gulpif(process.env.TARGET === 'uglify', uglify()))
+			.pipe(rename(function(path) {
+				path.basename = 'app.min';
+			}))
+			.pipe(gulp.dest('../www', {overwrite: true}));
+
 })
 
 //copy fonts and images and CNAME
@@ -44,7 +69,7 @@ gulp.task('copy', function(){
 
 //compile jade
 gulp.task('jade', function(){
-	gulp.src(['**/*.src.jade'])
+	gulp.src(['**/*.src.jade', '!bak/**/*.*'])
 			.pipe(jade({pretty: false}))
 			.pipe(rename(function(path){
 				path.basename = path.basename.replace(/\.src$/, '');
@@ -56,5 +81,5 @@ gulp.task('jade', function(){
 
 
 gulp.task('default', function(){
-	gulp.run('less', 'uglify', 'jade', 'copy');
+	gulp.run('less', 'pack', 'jade', 'copy');
 });

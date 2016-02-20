@@ -1,11 +1,13 @@
 {
   "name": "resume",
   "version": "0.1.0",
-  "description": "=====\r 这是我的3D网页简历 [fanlinfeng.xyz](http://fanlinfeng.xyz), 此网页在较新版本的chrome, safari, Firefox, opera中可以正常显示3D效果, 如果你喜欢, 可以修改里面的数据, 然后编译生成你自己的3D网页简历.\r 考虑性能问题, 移动端是另一套网页",
+  "description": "=====\r 这是我的3D网页简历 [resume.fanlinfeng.com](http://resume.fanlinfeng.com), 此网页在较新版本的chrome, safari, Firefox, opera中可以正常显示3D效果, 如果你喜欢, 可以修改里面的数据, 然后编译生成你自己的3D网页简历.\r 考虑性能问题, 移动端是另一套网页",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
+    "gulp-browserify": "^0.5.1",
     "gulp-file-include": "^0.13.7",
     "gulp-if": "^2.0.0",
     "gulp-jade": "^1.1.0",

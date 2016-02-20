@@ -9,7 +9,8 @@ html(lang='en')
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 		script(src='../js/fn.min.js')
 		script.
-			if(fn.browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
+			@@include('../js/browser.js')
+			if(browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
 		link(rel='stylesheet', href='css/index.css')
 		link(rel='stylesheet', href='../css/icon.css')
 	body

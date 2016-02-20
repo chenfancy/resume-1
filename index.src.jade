@@ -9,9 +9,9 @@ html(lang='en')
 		meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome')
 		meta(name='renderer', content='webkit')
 		link(rel='stylesheet', id='link')
-		script(src='js/fn.min.js')
 		script.
-			if(!fn.browser.support) location.href = "/old";
+			@@include('./js/browser.js')
+			if(!browser.support) location.href = "/old";
 		script.
 			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";
@@ -100,6 +100,6 @@ html(lang='en')
 		a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
 			|@@include('mod/svg/fork.svg')
 
-		script(src="js/index.min.js")
+		script(src="app.min.js")
 
 
