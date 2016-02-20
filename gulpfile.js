@@ -6,6 +6,8 @@ var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
+
+var babel = require("gulp-babel");
 // var del = require('gulp-del');
 
 var gulpif = require('gulp-if');
@@ -32,8 +34,8 @@ gulp.task('less', function(){
 //compress and rename *.js
 gulp.task('uglify', function(){
 	gulp.src(['js/*.js', '!js/*.min.js'], {base: './'})
-		.pipe(gulpif(process.env.TARGET === 'uglify', uglify()))
-		// .pipe(process.env.TARGET === 'uglify' ? uglify() :   )
+		.pipe(gulpif(process.env.TARGET === 'production', uglify()))
+		// .pipe(process.env.TARGET === 'production' ? uglify() :   )
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
@@ -44,9 +46,12 @@ gulp.task('uglify', function(){
 gulp.task('pack', function() {
 	gulp.src('./entry.js')
 			.pipe(browserify({
-
+				debug: process.env.TARGET !== 'production'
 			}))
-			.pipe(gulpif(process.env.TARGET === 'uglify', uglify()))
+			.pipe(babel({
+				presets: ['es2015']
+			}))
+			.pipe(gulpif(process.env.TARGET === 'production', uglify()))
 			.pipe(rename(function(path) {
 				path.basename = 'app.min';
 			}))

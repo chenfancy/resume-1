@@ -13,7 +13,7 @@ test:
 	gulp
 
 production:
-	TARGET=uglify gulp
+	TARGET=production gulp
 
 dev:
 	git add -A
