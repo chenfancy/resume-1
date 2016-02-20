@@ -77,7 +77,7 @@
 				nav = fn.id("nav"),
 				navLi = fn.tag("li", nav);
 
-		let page = ['home', 'ability', 'my-own-projects', '3d-work', 'info'],
+		let page = ['home', 'ability', 'personal-project', '3d-works', 'info'],
 				paramArr = window.location.href.split('#!'),
 				param = paramArr[1];
 
