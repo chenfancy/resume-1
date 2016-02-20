@@ -44,6 +44,8 @@
 				}
 			});
 		} else {
+			fn.tag('svg', fn.cls('avatar-container')[0])[0].outerHTML = `<img src="${config.base + me_url}">`;
+
 			init();
 			loadBg();
 			set3dWork();
