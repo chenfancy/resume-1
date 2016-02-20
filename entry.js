@@ -3,7 +3,7 @@
 	var move = require('./js/move');
 	
 	window.onload = function(){
-		var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
+		var me_url = browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
 		var pathOffset = [2000, 1200];
 
 		fn.img([config.base + me_url], function(over){
@@ -139,7 +139,7 @@
 				transform(e, "rotateY("+ i*360/n +"deg) translate3d(0, 0, "+cube.d+"px)");
 			});
 
-			if(fn.browser.mobile) fn.cls('skill_des')[0].style.width = '100%';
+			// if(browser.mobile) fn.cls('skill_des')[0].style.width = '100%';
 
 		}
 
