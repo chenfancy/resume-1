@@ -1,51 +1,50 @@
+(function() {
+	var fn = require('./js/fn');
+	var move = require('./js/move');
+	
+	window.onload = function(){
+		var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
+		var pathOffset = [2000, 1200];
 
-window.onload = function(){
-	var fn = require('./js/fn.js');
-	var move = require('./js/move.js');
+		fn.img([config.base + me_url], function(over){
+			if(over){
+				init();
+				loadBg();
+				set3dWork();
 
+				var avatarContainer = fn.cls('avatar-container', 'div')[0];
+				var svg = avatarContainer.getElementsByTagName('svg')[0];
+				var path = svg.getElementsByTagName('path');
+				var avatar = document.createElement('img');
+				avatar.src = this.src;
+				avatar.style.opacity = 0;
+				avatarContainer.appendChild(avatar);
 
-	var me_url = fn.browser.mac ? 'img/wo.mac.png' : 'img/wo.png';
-	var pathOffset = [2000, 1200];
-
-
-	fn.img([config.base + me_url], function(over){
-		if(over){
-			init();
-			loadBg();
-			set3dWork();
-
-			var avatarContainer = fn.cls('avatar-container', 'div')[0];
-			var svg = avatarContainer.getElementsByTagName('svg')[0];
-			var path = svg.getElementsByTagName('path');
-			var avatar = document.createElement('img');
-			avatar.src = this.src;
-			avatar.style.opacity = 0;
-			avatarContainer.appendChild(avatar);
-
-			fn.each(path, function(i, e){
-				e.style.strokeDashoffset = pathOffset[0];	
-			});
-			setTimeout(function() {
-				move.ease(pathOffset, 6000, function(v){
-					fn.each(path, function(i, e){
-						e.style.strokeDashoffset = v;	
-					});
-				}, function(){
-					move.ease([1, 0], 1000, function(v){
-						svg.style.opacity = v;
-					}, function(){
-						svg.parentNode.removeChild(svg);
-					});
-					move.ease([0, 1], 2000, function(v){
-						avatar.style.opacity = v;
-					})
+				fn.each(path, function(i, e){
+					e.style.strokeDashoffset = pathOffset[0];
 				});
+				setTimeout(function() {
+					move.ease(pathOffset, 6000, function(v){
+						fn.each(path, function(i, e){
+							e.style.strokeDashoffset = v;	
+						});
+					}, function(){
+						move.ease([1, 0], 1000, function(v){
+							svg.style.opacity = v;
+						}, function(){
+							svg.parentNode.removeChild(svg);
+						});
+						move.ease([0, 1], 2000, function(v){
+							avatar.style.opacity = v;
+						})
+					});
 
-			}, 2000);
+				}, 2000);
 
-		}
-	});
-
+			}
+		});
+	}
+	
 	function loadBg() {
 		fn.img([bgUrl], function(over){
 			if(over){
@@ -203,18 +202,18 @@ window.onload = function(){
 
 
 
-/*	(function(){
-		//技能页
-		var skill_chart = fn.cls('skill_chart')[0],
-				I = fn.tag('i', skill_chart),
-				skill_icon = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="LI"; }),
-				skill_score = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="DIV"; });
+	/*	(function(){
+			//技能页
+			var skill_chart = fn.cls('skill_chart')[0],
+					I = fn.tag('i', skill_chart),
+					skill_icon = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="LI"; }),
+					skill_score = fn.filter(I, function(i, e){ return e.parentNode.nodeName==="DIV"; });
 
-		for(var i=0, m=skill_icon.length; i<m; i++){
-			// skill_icon[i].style.backgroundPosition = "0px "+ i*-40 +"px";
-			skill_score[i].style.width = +fn.get(skill_icon[i], 'k').split('-')[1] + "%";
-		}
-	})();*/
+			for(var i=0, m=skill_icon.length; i<m; i++){
+				// skill_icon[i].style.backgroundPosition = "0px "+ i*-40 +"px";
+				skill_score[i].style.width = +fn.get(skill_icon[i], 'k').split('-')[1] + "%";
+			}
+		})();*/
 
 
 
@@ -395,4 +394,5 @@ window.onload = function(){
 
 	document.body.ondragstart = function(){ return false; }
 
-}
+})();
+
