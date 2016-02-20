@@ -67,7 +67,8 @@ html(lang='en')
 										i(style='width: #{v}%')
 				div.face.face_project
 					div.content.project.fit
-						h2.title(style='color: #fff') 部分个人项目
+						h2.title(style='color: #fff') 部分个人项目&emsp;
+							a(href= github) 查看Github
 						- each v, i in project
 							div
 								a(href= v.href||'javascript:;')
@@ -77,7 +78,8 @@ html(lang='en')
 									!= v.des
 				div.face.face_work
 					div.content.work
-						h2.title(style='color: #fff') 部分3D作品
+						h2.title(style='color: #fff') 部分3D作品&emsp;
+							a(href= lofter) 查看Lofter
 						ul.w_ul
 							li
 							li

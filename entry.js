@@ -7,34 +7,47 @@
 		let me_url = browser.mac ? 'img/wo.mac.png' : 'img/wo.png',
 				pathOffset = [2000, 1200];
 
-		fn.img([config.base + me_url], function(over){
-			if(over){
-				init();
-				loadBg();
-				set3dWork();
+		if(window.innerWidth >= 1000) {
+			fn.img([config.base + me_url], function(over){
+				if(over){
+					init();
+					loadBg();
+					set3dWork();
 
-				let avatarContainer = fn.cls('avatar-container', 'div')[0],
-						svg = fn.tag('svg', avatarContainer)[0],
-						path = fn.tag('path', svg),
-						avatar = document.createElement('img');
+					let avatarContainer = fn.cls('avatar-container')[0],
+							svg = fn.tag('svg', avatarContainer)[0],
+							path = fn.tag('path', svg),
+							avatar = document.createElement('img'),
+							contactBox = fn.cls('contact-box')[0]
 
-				avatar.src = this.src;
-				avatar.style.opacity = 0;
-				avatarContainer.appendChild(avatar);
+					avatar.src = this.src;
+					avatar.style.opacity = contactBox.style.opacity = 0;
+					avatarContainer.appendChild(avatar);
 
-				fn.each(path, (i, e) => e.style.strokeDashoffset = pathOffset[0] );
+					fn.each(path, (i, e) => e.style.strokeDashoffset = pathOffset[0] );
 
-				setTimeout(function() {
-					move.ease(pathOffset, 6000, v => {
-						fn.each(path, (i, e) => e.style.strokeDashoffset = v );
-					}, () => {
-						move.ease([1, 0], 1000, v => svg.style.opacity = v, () => svg.parentNode.removeChild(svg) );
-						move.ease([0, 1], 2000, v => avatar.style.opacity = v )
-					});
-				}, 2000);
+					setTimeout(function() {
+						move.ease(pathOffset, 6000, v => {
+							fn.each(path, (i, e) => e.style.strokeDashoffset = v );
+						}, () => {
+							move.ease([1, 0], 800, v => svg.style.opacity = v, () => {
+								svg.parentNode.removeChild(svg)
+								move.collision([0, 1], 1000, v => {
+									contactBox.style.opacity = v;
+									contactBox.style.marginTop = -100 + v*-40 + 'px';
+								})
+							});
+							move.ease([0, 1], 1500, v => avatar.style.opacity = v);
+						});
+					}, 1500);
 
-			}
-		});
+				}
+			});
+		} else {
+			init();
+			loadBg();
+			set3dWork();
+		}
 	}
 	
 	function loadBg() {
@@ -61,7 +74,6 @@
 				face = fn.filter(cube.childNodes, function(i, e){ return e.nodeType === 1 ? true : false; }),
 				nav = fn.id("nav"),
 				navLi = fn.tag("li", nav);
-				//arrow = fn.cls("arrow", "div");
 
 		let page = ['home', 'ability', 'my-own-projects', '3d-works', 'info'],
 				paramArr = window.location.href.split('#!'),
@@ -132,8 +144,6 @@
 				transform(e, `rotateY(${i*360/n}deg) translate3d(0, 0, ${cube.d}px)`);
 			});
 
-			// if(browser.mobile) fn.cls('skill_des')[0].style.width = '100%';
-
 		}
 
 		//滚滑轮和点击方向键执行函数
@@ -180,7 +190,7 @@
 
 	function set3dWork(){
 		//3d作品展示
-		let w_ul = fn.cls('w_ul', 'ul')[0],
+		let w_ul = fn.cls('w_ul')[0],
 				w_li = fn.tag('li', w_ul),
 				w_img = fn.tag('img', w_ul);
 

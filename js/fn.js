@@ -42,14 +42,14 @@
 		},
 
 		cls: function(cls, p){
-			// if(!b.ie || (b.ie && b.v > 8)) return Array.prototype.slice(doc.getElementsByClassName(cls), 0);
-			if(typeof p === 'string') p = this.tag(p);
-			else if(typeof p === 'object' && object.length){}
-			else p = this.tag('*');
+			return doc.getElementsByClassName(cls);
+			// if(typeof p === 'string') p = this.tag(p);
+			// else if(typeof p === 'object' && object.length){}
+			// else p = this.tag('*');
 
-			return this.filter(p, function(i, e){
-				return this.hasCls(e, cls);
-			})
+			// return this.filter(p, function(i, e){
+			// 	return this.hasCls(e, cls);
+			// })
 		},
 
 		hasCls: function(obj, cls){
