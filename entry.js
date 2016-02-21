@@ -32,10 +32,12 @@
 						}, () => {
 							move.ease([1, 0], 800, v => svg.style.opacity = v, () => {
 								svg.parentNode.removeChild(svg)
-								move.collision([0, 1], 1000, v => {
-									contactBox.style.opacity = v;
-									contactBox.style.marginTop = -100 + v*-40 + 'px';
+								move.collision([0, 360], 1500, v => {
+									contactBox.style.transform = `rotate(${v}deg)`;
+									contactBox.style.webkitTransform = `rotate(${v}deg)`;
 								})
+								move.collision([-400, -180], 1500, v => contactBox.style.marginTop = `${v}px` );
+								move.ease([0, 1], 500, v => contactBox.style.opacity = v )
 							});
 							move.ease([0, 1], 1500, v => avatar.style.opacity = v);
 						});
@@ -44,7 +46,7 @@
 				}
 			});
 		} else {
-			fn.tag('svg', fn.cls('avatar-container')[0])[0].outerHTML = `<img src="${config.base + me_url}">`;
+			fn.cls('avatar-container')[0].innerHTML = `<img src="${config.base + me_url}">`;
 
 			init();
 			loadBg();
