@@ -1,6 +1,6 @@
 热爱新技术, 希望能做web前端开发.
 
-**HTML-CSS-JS:** 非常熟练使用html(5), css(3), js, 深入理解面向对象编程以及js的原型链继承方式, 编写原生js得心应手, 可完全不借助第三方框架和库写完一个网站. 独立实现超轻量DOM节点复杂选择器[select](https://github.com/flfwzgl/select)并兼容到IE6, 并基于此选择器使用伪数组简单实现了一个[仿jquery](https://github.com/flfwzgl/f), 熟悉响应式布局, 有移动端响应式开发经验
+**HTML-CSS-JS:** 非常熟练使用html(5), css(3), js, 深入理解面向对象编程以及js的原型继承方式, 编写原生js得心应手, 可完全不借助第三方框架和库写完一个网站. 独立实现超轻量DOM节点复杂选择器[select](https://github.com/flfwzgl/select)并兼容到IE6, 并基于此选择器使用伪数组简单实现了一个[仿jquery](https://github.com/flfwzgl/f), 熟悉响应式布局, 有移动端响应式开发经验
 
 **前端常用工具和技术:** 非常熟悉CoffeeScript, Less, Sass, Jade, ejs等并用来提高开发效率, 熟悉Git和SVN版本控制工具, 熟练使用Nodejs, Express, ES6, webpack, browserify, Vue.
 
