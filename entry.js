@@ -33,15 +33,15 @@
 						}, () => {
 							move.ease([1, 0], 800, v => svg.style.opacity = v, () => {
 								svg.parentNode.removeChild(svg)
-								move.collision([2, 1], 1500, v => {
-									contactBox.style.transform = `scaleY(${v})`;
-									contactBox.style.webkitTransform = `scaleY(${v})`;
-								})
-								// move.collision([0, 360], 1500, v => {
-								// 	contactBox.style.transform = `rotate(${v}deg)`;
-								// 	contactBox.style.webkitTransform = `rotate(${v}deg)`;
+								// move.collision([2, 1], 1500, v => {
+								// 	contactBox.style.transform = `scaleY(${v})`;
+								// 	contactBox.style.webkitTransform = `scaleY(${v})`;
 								// })
-								move.collision([-400, -180], 1500, v => contactBox.style.marginTop = `${v}px` );
+								move.collision([90, 0], 1500, v => {
+									contactBox.style.transform = `rotateY(${v}deg)`;
+									contactBox.style.webkitTransform = `rotateY(${v}deg)`;
+								})
+								// move.collision([-400, -180], 1500, v => contactBox.style.marginTop = `${v}px` );
 								move.ease([0, 1], 500, v => contactBox.style.opacity = v )
 							});
 							move.ease([0, 1], 1500, v => avatar.style.opacity = v);

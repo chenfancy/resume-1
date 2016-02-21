@@ -2,6 +2,7 @@
 var gulp = require('gulp');
 var less = require('gulp-less');
 var minifyCss = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
 var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
@@ -28,6 +29,7 @@ var fileinclude = require('gulp-file-include');
 gulp.task('less', function(){
 	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*', '!bak/**/*.*'])
 		.pipe(less())
+		.pipe(autoprefixer())
 		.pipe(minifyCss())
 		.pipe(gulp.dest('../www'));
 });
