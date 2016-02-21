@@ -65,7 +65,7 @@ module.exports = {
 
 	info: [{
 		title: '英语能力',
-		content: '大学英语6级'
+		content: 'CET-6'
 	}, {
 		title: '教育经历',
 		content: '<b>毕业院校: </b>成都信息工程大学<br> <b>专业: </b>电子科学与技术<br><b>学历: </b>本科'
