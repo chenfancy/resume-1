@@ -7,6 +7,8 @@ var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
 
+var data = require('gulp-data');
+
 var babel = require("gulp-babel");
 // var del = require('gulp-del');
 
@@ -74,7 +76,10 @@ gulp.task('copy', function(){
 
 //compile jade
 gulp.task('jade', function(){
-	gulp.src(['**/*.src.jade', '!bak/**/*.*'])
+	gulp.src(['**/index.src.jade', '!bak/**/*.*'])
+			.pipe(data(function() {
+				return require('./data/data');
+			}))
 			.pipe(jade({pretty: false}))
 			.pipe(rename(function(path){
 				path.basename = path.basename.replace(/\.src$/, '');

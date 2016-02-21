@@ -1,6 +1,3 @@
-include data/config.jade
-include data/data.jade
-
 doctype html
 html(lang='en')
 	head
@@ -13,7 +10,6 @@ html(lang='en')
 			@@include('./js/browser.js')
 			if(!browser.support) location.href = "/old";
 		script.
-			var config = !{JSON.stringify(config)};
 			var bgUrl = "#{bgUrl}";
 		link(rel="stylesheet", href="css/index.css")
 		link(rel='stylesheet', href='css/icon.css') 
@@ -25,7 +21,6 @@ html(lang='en')
 						div.avatar-box
 							div.avatar-container
 								|@@include('mod/svg/wo.svg')
-								//- img(src=config.base + 'img/wo.png', alt='头像')
 						div.contact-box
 							h1.name.center= name
 							ul.contact.auto
@@ -55,7 +50,7 @@ html(lang='en')
 				div.face.face_skill
 					div.content.skill.fit
 						div.skill_des
-							|@@include('data/skill.html')
+							!= skill_des
 
 						ul.skill_chart
 							each v, a in skill_chart

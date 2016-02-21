@@ -1,13 +1,9 @@
-include ../data/config.jade
-include ../data/data.jade
-
 doctype html
 html(lang='en')
 	head
 		meta(charset='UTF-8')
 		title= name + '-个人简历'
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-		script(src='../js/fn.min.js')
 		script.
 			@@include('../js/browser.js')
 			if(browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
@@ -45,7 +41,7 @@ html(lang='en')
 			div.detail
 				div.section
 					h2.section-title 技能简介
-					|@@include('../data/skill.html')
+					= skill_des
 
 				div.section
 					h2.section-title 部分个人项目
