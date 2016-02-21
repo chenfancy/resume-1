@@ -5,7 +5,6 @@ html(lang='en')
 		title= name + '-个人简历'
 		meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome')
 		meta(name='renderer', content='webkit')
-		link(rel='stylesheet', id='link')
 		script.
 			@@include('./js/browser.js')
 			if(!browser.support) location.href = "/old";
@@ -34,8 +33,8 @@ html(lang='en')
 									i.icon-weixin
 									span=weixin
 								//- li
-								//- 	i.icon-qq
-								//- 	span= qq
+								//-   i.icon-qq
+								//-   span= qq
 								li
 									i.icon-github
 									span
