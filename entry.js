@@ -52,7 +52,6 @@
 			});
 		} else {
 			fn.cls('avatar-container')[0].innerHTML = `<img src="${config.base + me_url}">`;
-
 			init();
 			loadBg();
 			set3dWork();
@@ -77,6 +76,8 @@
 
 
 	function init(){
+		fn.remove(fn.id('wait'));
+
 		//旋转, 初始化
 		let stage = fn.id('stage'),
 				cube = fn.id("cube"),

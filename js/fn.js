@@ -106,6 +106,10 @@
 			return res;
 		},
 
+		remove: function(e) {
+			return e.parentNode.removeChild(e);
+		},
+
 		//预加载图片, 传入图片url数组 callback中 index属性是img的src位于urlArr中第几个,  serial属性是img是第几个加载完成的
 		img: function(urlArr, fn){
 			var oImg=[], n = 0;
