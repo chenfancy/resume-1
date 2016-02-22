@@ -11,7 +11,8 @@ function getstr(fileDir, md) {
 
 
 module.exports = {
-	bgUrl: 'http://imgstore.cdn.sogou.com/app/a/100540002/816020.jpg',
+	bgUrl: 'img/bg.jpg',
+	// bgUrl: 'http://imgstore.cdn.sogou.com/app/a/100540002/816020.jpg',
 	name: '范林峰',
 	phone: 18565720532,
 	qq: '583187400',
