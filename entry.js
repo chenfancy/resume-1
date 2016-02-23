@@ -33,7 +33,7 @@
 							fn.each(path, (i, e) => e.style.strokeDashoffset = v );
 						}, () => {
 							move.ease([1, 0], 800, v => svg.style.opacity = v, () => {
-								svg.parentNode.removeChild(svg)
+								fn.remove(svg);
 								// move.collision([2, 1], 1500, v => {
 								//  contactBox.style.transform = `scaleY(${v})`;
 								//  contactBox.style.webkitTransform = `scaleY(${v})`;
