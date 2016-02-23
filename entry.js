@@ -12,8 +12,6 @@
 			fn.img([config.base + me_url], function(over){
 				if(over){
 					init();
-					loadBg();
-					set3dWork();
 
 					let avatarContainer = fn.cls('avatar-container')[0],
 							svg = fn.tag('svg', avatarContainer)[0],
@@ -28,6 +26,9 @@
 					fn.each(path, (i, e) => e.style.strokeDashoffset = pathOffset[0] );
 
 					setTimeout(function() {
+						loadBg();
+						set3dWork();
+
 						move.ease(pathOffset, 7000, v => {
 							fn.each(path, (i, e) => e.style.strokeDashoffset = v );
 						}, () => {
