@@ -69,7 +69,7 @@
 				fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
 
 				setTimeout(() => {
-					bg.style.cssText = 'position:absolute; opacity:1; -webkit-transition-duration:1s; -moz-transition-duration:1s'
+					move.ease([0, 1], 1000, v => bg.style.opacity = v)
 				}, 100);
 			}
 		});
