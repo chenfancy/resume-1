@@ -20,7 +20,7 @@ dev:
 	git commit -m $(m)
 	git push $(coding) dev:dev -f
 
-www:
+www: production
 	cd ../www &&\
 		git add -A &&\
 		git commit -m $(m);\
