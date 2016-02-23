@@ -28,7 +28,7 @@
 					fn.each(path, (i, e) => e.style.strokeDashoffset = pathOffset[0] );
 
 					setTimeout(function() {
-						move.ease(pathOffset, 6000, v => {
+						move.ease(pathOffset, 7000, v => {
 							fn.each(path, (i, e) => e.style.strokeDashoffset = v );
 						}, () => {
 							move.ease([1, 0], 800, v => svg.style.opacity = v, () => {
@@ -151,7 +151,7 @@
 			transform(cube, `translate3d(0, 0, ${-cube.d}px) rotateY(${cube.a}deg)`);
 
 			fn.each(face, (i, e) => {
-				transform(e, `rotateY(${i*360/n}deg) translate3d(0, 0, ${cube.d}px)`);
+				transform(e, `rotateY(${i*360/n}deg) translate3d(0, 0, ${cube.d}px) scale(1)`);
 			});
 
 		}
