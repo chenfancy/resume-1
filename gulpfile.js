@@ -16,7 +16,7 @@ var fileinclude = require('gulp-file-include');
 
 
 gulp.task('clean', function(cb) {
-	del(['../www/**/*.*'], {force: true}).then(function() {
+	del(['../www/**/*.(html|css|js)'], {force: true}).then(function() {
 		cb();
 	})
 })
