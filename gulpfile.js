@@ -24,7 +24,7 @@ gulp.task('clean', function(cb) {
 
 //compile less
 gulp.task('less', function(){
-	gulp.src(['css/**/*.less', '!**/*.mod.less', '!node_modules/**/*.*', '!bak/**/*.*'])
+	gulp.src(['css/**/*.less', '!**/*.mod.less', '!node_modules/**/*.*', '!bak/**/*.*'], {base: './'})
 		.pipe(less())
 		.pipe(cssBase64({
 			// baseDir: '../mod/css',
