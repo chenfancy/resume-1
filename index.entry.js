@@ -130,12 +130,6 @@
 			.bind(window, "resize", function(){
 				adjust();
 			})
-			//点击前进后退触发事件处理程序
-			// .bind(window, 'popstate', function(e){
-			//  var state = e.state;
-			//  changePage(cube.cur=state.cur);
-			//  e = null;
-			// })
 			.bind(window, 'hashchange', function() {
 				var n = page.indexOf(location.hash.replace(/^#!/g, ''));
 				if( n > -1 ){
