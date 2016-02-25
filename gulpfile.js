@@ -7,30 +7,32 @@ var uglify = require('gulp-uglify');
 var jade = require('gulp-jade');
 var rename = require('gulp-rename');
 var browserify = require('gulp-browserify');
-
 var data = require('gulp-data');
-
+var cssBase64 = require('gulp-css-base64');
 var babel = require("gulp-babel");
-// var del = require('gulp-del');
-
+var del = require('del');
 var gulpif = require('gulp-if');
-
 var fileinclude = require('gulp-file-include');
 
 
-// gulp.task('del', function(cb) {
-// 	del([], function() {
-// 		cb();
-// 	})
-// })
+gulp.task('clean', function(cb) {
+	del(['../www/**/*.*'], {force: true}).then(function() {
+		cb();
+	})
+})
 
 
 //compile less
 gulp.task('less', function(){
-	gulp.src(['**/*.less', '!node_modules/**/*.*', '!mod/**/*.*', '!bak/**/*.*'])
+	gulp.src(['**/*.less', '!**/*.mod.less', '!mod/**/*.*', '!node_modules/**/*.*', '!bak/**/*.*'])
 		.pipe(less())
+		.pipe(cssBase64({
+			// baseDir: '../mod/css',
+			maxWeightResource: 100000,
+			extensionsAllowed: []
+		}))
 		.pipe(autoprefixer())
-		.pipe(minifyCss())
+		.pipe(gulpif(process.env.TARGET === 'production', minifyCss()))
 		.pipe(gulp.dest('../www'));
 });
 
@@ -43,7 +45,7 @@ gulp.task('uglify', function(){
 		.pipe(rename(function(path){
 			path.basename += '.min';
 		}))
-		.pipe(gulp.dest('../www/', {overwrite: true}));
+		.pipe(gulp.dest('../www/'));
 })
 */
 
@@ -59,21 +61,21 @@ gulp.task('pack', function() {
 			.pipe(rename(function(path) {
 				path.basename = 'app.min';
 			}))
-			.pipe(gulp.dest('../www', {overwrite: true}));
+			.pipe(gulp.dest('../www'));
 
 })
 
-//copy fonts and images and CNAME
+//copy images and CNAME, there's no need to copy fonts because of css-base64
 gulp.task('copy', function(){
-	gulp.src('css/fonts/*.*')
-			.pipe(gulp.dest('../www/css/fonts/', {overwrite: true}));
+	// gulp.src('css/fonts/*.*')
+	// 		.pipe(gulp.dest('../www/css/fonts/'));
 
 	//copy images
 	gulp.src(['img/**/*.*'], {base: './'})
-			.pipe(gulp.dest('../www/', {overwrite: true}));
+			.pipe(gulp.dest('../www/'));
 
 	gulp.src('CNAME')
-			.pipe(gulp.dest('../www/', {overwrite: true}));
+			.pipe(gulp.dest('../www/'));
 })
 
 //compile jade
@@ -92,6 +94,6 @@ gulp.task('jade', function(){
 });
 
 
-gulp.task('default', function(){
+gulp.task('default', ['clean'], function(){
 	gulp.run('less', 'pack', 'jade', 'copy');
 });
