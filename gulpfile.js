@@ -72,7 +72,7 @@ gulp.task('copy', function(){
 
 	//copy images
 	gulp.src(['img/**/*.*'], {base: './'})
-			.pipe(gulp.dest('../www/'));
+			.pipe(gulp.dest('../www/', {overwrite: true}));
 
 	gulp.src('CNAME')
 			.pipe(gulp.dest('../www/'));
