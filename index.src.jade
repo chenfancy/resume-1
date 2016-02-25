@@ -7,7 +7,7 @@ html(lang='en')
 		meta(name='renderer', content='webkit')
 		script.
 			@@include('./js/browser.js')
-			if(!browser.support) location.href = "/old";
+			if(!browser.support) location.href = "old.html";
 		script.
 			var bgUrl = "#{bgUrl}";
 		link(rel="stylesheet", href="css/index.css")
@@ -96,6 +96,6 @@ html(lang='en')
 		a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
 			|@@include('mod/svg/fork.svg')
 
-		script(src="app.min.js")
+		script(src="index.app.js")
 
 

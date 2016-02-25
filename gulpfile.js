@@ -50,7 +50,7 @@ gulp.task('uglify', function(){
 */
 
 gulp.task('pack', function() {
-	gulp.src('./entry.js')
+	gulp.src('./index.entry.js')
 			.pipe(browserify({
 				debug: process.env.TARGET !== 'production'
 			}))
@@ -59,7 +59,7 @@ gulp.task('pack', function() {
 			}))
 			.pipe(gulpif(process.env.TARGET === 'production', uglify()))
 			.pipe(rename(function(path) {
-				path.basename = 'app.min';
+				path.basename = path.basename.replace(/\.entry/, '.app');
 			}))
 			.pipe(gulp.dest('../www'));
 
@@ -80,7 +80,7 @@ gulp.task('copy', function(){
 
 //compile jade
 gulp.task('jade', function(){
-	gulp.src(['**/index.src.jade', '!bak/**/*.*'])
+	gulp.src(['**/*.src.jade', '!bak/**/*.*'])
 			.pipe(data(function() {
 				return require('./data/data');
 			}))

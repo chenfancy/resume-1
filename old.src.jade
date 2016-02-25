@@ -5,9 +5,9 @@ html(lang='en')
 		title= name + '-个人简历'
 		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
 		script.
-			@@include('../js/browser.js')
+			@@include('js/browser.js')
 			if(browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
-		link(rel='stylesheet', href='css/index.css')
+		link(rel='stylesheet', href='css/old.css')
 	body
 		base(target="_blank")
 		div#cv
