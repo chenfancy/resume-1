@@ -69,6 +69,7 @@ html(lang='en')
 									|@@include('svg/project/#{v.title}.svg')
 								p.p_des
 									a.b(href= v.href||'javascript:;')= v.name
+									|  — 
 									!= v.des
 				div.face.face_work
 					div.content.work

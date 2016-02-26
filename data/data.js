@@ -40,28 +40,33 @@ module.exports = {
 	project: [{
 		title: 'sczql',
 		name: '环游网',
-		des: '是四川中青旅旗下一个网站, 此项目是初学时做的练习, 所以存在很多问题',
+		des: '四川中青旅旗下一个网站, 此项目是初学时做的练习, 所以存在很多问题',
 		href: 'http://www.sczql.cn'
 	}, {
 		title: 'move',
 		name: 'move',
-		des: '是一个js动画库, 包含几种常用的动画, 只要css属性中含有数字的均可用此实现过渡动画.',
+		des: '一个js动画库, 包含几种常用的动画, 只要css属性中含有数字的均可用此实现过渡动画.',
 		href: 'https://github.com/flfwzgl/move'
 	}, {
 		title: 'select',
 		name: 'select',
-		des: '是一个超轻量且兼容到 <font color="#fbb">IE5</font> 的DOM选择器',
+		des: '一个超轻量且兼容到 <font color="#fbb">IE5</font> 的DOM选择器',
 		href: 'https://github.com/flfwzgl/select'
 	}, {
 		title: 'f',
 		name: 'f.js',
-		des: '是一个功能仿jquery的库, 体积小, 加入了常用的jquery功能, 内部选择器是select',
+		des: '一个功能仿jquery的库, 体积小, 加入了常用的jquery功能, 内部选择器是select',
 		href: 'https://github.com/flfwzgl/f'
 	}, {
 		title: 'cal',
 		name: 'calender',
-		des: '是一个轻量方便好用的日历组件',
+		des: '一个轻量方便好用的日历组件',
 		href: 'http://flfwzgl.github.io/calendar/'
+	}, {
+		title: 'vue-cnode',
+		name: 'vue-cnode',
+		des: '使用vue,webpack,ES6编写的h5 webapp, cnode社区提供后台API',
+		href: 'https://github.com/flfwzgl/vue-cnode'
 	}],
 
 	info: [{
