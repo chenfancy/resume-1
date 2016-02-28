@@ -29,42 +29,19 @@
   // fnEnd => 动画结束时回调               (可不传)
   // 例如: m.ease([0, 1000], 500, function(v){ ... }, fnEnd)
   // 注意: 这些参数的顺序可以打乱!!!
-  module.exports = new Move;
-
-
-  var request = window.requestAnimationFrame,
-      stopRequest = window.cancelAnimationFrame
-
-  var _move, _stopMove;
-
-  //初始化运动函数和停止函数  
-  if(request) {
-    _move = function(fn, timer){
-      var step = function() {
-        if(!fn()) timer.id = request(step);
-      }
-      step();
-    }
+  if(typeof module === 'object' && module.exports) {
+    module.exports = new Move;
   } else {
-    _move = function(fn, timer) {
-      timer.id = setInterval(fn, 16);
+    if(window.move) {
+      try {
+        console.log('move has been declared!');
+      } catch(e) {}
+    } else {
+      window.move = new Move;
     }
   }
 
-  if(stopRequest) {
-    _stopMove = function(timer) {
-      stopRequest(timer.id);
-    }
-  } else {
-    _stopMove = function(timer) {
-      clearInterval(timer.id);
-    }
-  }
-
-
-
-
-/* //由于 try catch 性能差
+  var request = window.requestAnimationFrame;
   //兼容setInterval, requestAnimationFrame
   function _move(fn, timer){
     var step;
@@ -76,7 +53,16 @@
     } catch(e) {
       timer.id = setInterval(fn, 16);
     }
-  }*/
+  }
+
+  //停止动画兼容函数
+  function _stopMove(timer){
+    try{
+      window.cancelAnimationFrame(timer.id);
+    } catch(e) {
+      clearInterval(timer.id);
+    }
+  }
 
   //开始动画函数
   function _doMove(arg, moveType){

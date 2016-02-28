@@ -1,4 +1,4 @@
-flfip=192.168.1.111
+flfip=115.28.83.193
 flfhost=root@$(flfip)
 githost=git@github.com
 coding=git@git.coding.net:flfwzgl/resume.git
@@ -17,13 +17,13 @@ production:
 
 dev:
 	git add -A
-	git commit -m $(m)
+	git commit -m '$(m)'
 	git push $(coding) dev:dev -f
 
 www: production
 	cd ../www &&\
 		git add -A &&\
-		git commit -m $(m);\
+		git commit -m '$(m)';\
 		git push $(coding) www:www -f
 
 sync:
