@@ -1,4 +1,4 @@
-flfip=115.28.83.193
+flfip=192.168.1.111
 flfhost=root@$(flfip)
 githost=git@github.com
 coding=git@git.coding.net:flfwzgl/resume.git
