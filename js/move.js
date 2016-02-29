@@ -41,25 +41,32 @@
     }
   }
 
-  var request = window.requestAnimationFrame;
-  //兼容setInterval, requestAnimationFrame
-  function _move(fn, timer){
-    var step;
-    try {
-      step = function(){
+
+  var request = window.requestAnimationFrame,
+      stopRequest = window.cancelAnimationFrame
+
+  var _move, _stopMove;
+
+  //初始化运动函数和停止函数  
+  if(request) {
+    _move = function(fn, timer){
+      var step = function() {
         if(!fn()) timer.id = request(step);
       }
       step();
-    } catch(e) {
+    }
+  } else {
+    _move = function(fn, timer) {
       timer.id = setInterval(fn, 16);
     }
   }
 
-  //停止动画兼容函数
-  function _stopMove(timer){
-    try{
-      window.cancelAnimationFrame(timer.id);
-    } catch(e) {
+  if(stopRequest) {
+    _stopMove = function(timer) {
+      stopRequest(timer.id);
+    }
+  } else {
+    _stopMove = function(timer) {
       clearInterval(timer.id);
     }
   }
