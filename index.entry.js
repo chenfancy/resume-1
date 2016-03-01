@@ -54,30 +54,29 @@
 		} else {
 			fn.cls('avatar-container')[0].innerHTML = `<img src="${config.base + me_url}">`;
 			init();
+			// loadBg();
+			set3dWork();
 		}
 	}
 	
-	function loadBg() {
-		fn.img([bgUrl], function(over){
-			if(over){
-				let bg = document.createElement('img');
+	// function loadBg() {
+	// 	fn.img([bgUrl], function(over){
+	// 		if(over){
+	// 			let bg = document.createElement('img');
 
-				bg.src = this.src;
-				bg.style.cssText = 'position:absolute; opacity:0;';
-				fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
+	// 			bg.src = this.src;
+	// 			bg.style.cssText = 'position:absolute; opacity:0;';
+	// 			fn.id('stage').insertBefore(bg, fn.id('stage').firstChild);
 
-				setTimeout(() => {
-					move.ease([0, 1], 1000, v => bg.style.opacity = v)
-				}, 100);
-			}
-		});
-	}
+	// 			setTimeout(() => {
+	// 				move.ease([0, 1], 1000, v => bg.style.opacity = v)
+	// 			}, 100);
+	// 		}
+	// 	});
+	// }
 
 
-	function init(){
-		// loadBg();
-		set3dWork();
-		
+	function init(){		
 		fn.remove(fn.id('wait'));
 
 		//旋转, 初始化
