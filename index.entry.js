@@ -26,7 +26,7 @@
 					fn.each(path, (i, e) => e.style.strokeDashoffset = pathOffset[0] );
 
 					setTimeout(function() {
-						loadBg();
+						// loadBg();
 						set3dWork();
 
 						move.ease(pathOffset, 7000, v => {
