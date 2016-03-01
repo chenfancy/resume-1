@@ -54,8 +54,6 @@
 		} else {
 			fn.cls('avatar-container')[0].innerHTML = `<img src="${config.base + me_url}">`;
 			init();
-			loadBg();
-			set3dWork();
 		}
 	}
 	
@@ -77,6 +75,9 @@
 
 
 	function init(){
+		// loadBg();
+		set3dWork();
+		
 		fn.remove(fn.id('wait'));
 
 		//旋转, 初始化
