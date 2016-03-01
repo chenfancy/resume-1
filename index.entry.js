@@ -103,7 +103,8 @@
 		cube.style.webkitTransitionDuration = cube.time+"s";
 		cube.style.transitionDuration = cube.time+"s";
 		
-		setTimeout(() => adjust(), 200);
+		//延迟一点时间加载, 解决windows下chrome面片闪烁问题, .5s恰好让用户有时间看清整个动画开始过程
+		setTimeout(() => adjust(), 500);
 		// changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
 
 		//动态添加nav, 并设置位置,class, 添加click事件
