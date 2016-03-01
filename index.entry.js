@@ -103,7 +103,7 @@
 		cube.style.webkitTransitionDuration = cube.time+"s";
 		cube.style.transitionDuration = cube.time+"s";
 		
-		adjust();
+		setTimeout(() => adjust(), 200);
 		// changeUrl({url:paramArr[0]+ '#!' +page[cube.cur], cur:cube.cur});
 
 		//动态添加nav, 并设置位置,class, 添加click事件
