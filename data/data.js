@@ -50,7 +50,7 @@ module.exports = {
 	}, {
 		title: 'select',
 		name: 'select',
-		des: '一个超轻量且兼容到 <font color="#fbb">IE5</font> 的DOM选择器',
+		des: '一个超轻量且兼容到 <font color="#fbb">IE6</font> 的DOM选择器',
 		href: 'https://github.com/flfwzgl/select'
 	}, {
 		title: 'f',
