@@ -26,15 +26,15 @@ module.exports = {
 
 	skill_chart: {
 		html: 70,
-		css: 70,
+		css: 80,
 		js: 80,
-		jquery: 80,
+		jquery: 70,
 		nodejs: 50,
 		d3: 30,
 		php: 50,
 		mysql: 50,
-		ps: 95,
-		maya: 90
+		ps: 90,
+		maya: 80
 	},
 
 	project: [{
