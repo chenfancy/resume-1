@@ -37,12 +37,12 @@ module.exports = {
 		maya: 80
 	},
 
-	project: [{
+	project: [/*{
 		title: 'sczql',
 		name: '环游网',
 		des: '四川中青旅旗下一个网站, 此项目是初学时做的练习, 所以存在很多问题',
 		href: 'http://www.sczql.cn'
-	}, {
+	}, */{
 		title: 'move',
 		name: 'move',
 		des: '一个js动画库, 包含几种常用的动画, 只要css属性中含有数字的均可用此实现过渡动画.',
