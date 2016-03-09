@@ -47,12 +47,12 @@ module.exports = {
 		name: 'move',
 		des: '一个js动画库, 包含几种常用的动画, 只要css属性中含有数字的均可用此实现过渡动画.',
 		href: 'https://github.com/flfwzgl/move'
-	}, {
+	}, /*{
 		title: 'select',
 		name: 'select',
 		des: '一个超轻量且兼容到 <font color="#fbb">IE6</font> 的DOM选择器',
 		href: 'https://github.com/flfwzgl/select'
-	}, {
+	}, */{
 		title: 'f',
 		name: 'f.js',
 		des: '一个功能仿jquery的库, 体积小, 加入了常用的jquery功能, 内部选择器是select',
