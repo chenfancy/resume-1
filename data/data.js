@@ -46,12 +46,12 @@ module.exports = {
 		title: 'move',
 		name: 'move',
 		des: '一个js动画库, 包含几种常用的动画, 只要css属性中含有数字的均可用此实现过渡动画.',
-		href: 'https://github.com/flfwzgl/move'
+		href: 'http://demo.fanlinfeng.com/move/'
 	}, {
 		title: 'select',
 		name: 'select',
 		des: '一个超轻量且兼容到 <font color="#fbb">IE6</font> 的DOM选择器',
-		href: 'https://github.com/flfwzgl/select'
+		href: 'http://demo.fanlinfeng.com/select/'
 	}, /*{
 		title: 'f',
 		name: 'f.js',
@@ -66,7 +66,7 @@ module.exports = {
 		title: 'vue-cnode',
 		name: 'vue-cnode',
 		des: '使用vue,webpack,ES6编写的h5 webapp, cnode社区提供后台API',
-		href: 'https://github.com/flfwzgl/vue-cnode'
+		href: 'http://demo.fanlinfeng.com/vue-cnode/'
 	}],
 
 	info: [{
