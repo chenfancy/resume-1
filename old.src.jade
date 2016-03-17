@@ -1,68 +1,68 @@
 doctype html
 html(lang='en')
-  head
-    meta(charset='UTF-8')
-    title= name + '-个人简历'
-    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
-    script.
-      @@include('js/browser.js')
-      if(browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
-    link(rel='stylesheet', href='css/old.css')
-  body
-    base(target="_blank")
-    div#cv
-      div.basic-info
-        div.avatar
-          img(src="/img/avatar.png")
-        div.name=name
-        ul.contact
-          li
-            i.icon-phone
-            span=phone
-          li
-            i.icon-email
-            span=email
-          li
-            i.icon-weixin
-            span=weixin
-          li
-            i.icon-github
-            span
-              a(href=github) github
-          li
-            i.icon-lofter
-            span
-              a(href=lofter) lofter
-          li
-            i.icon-location
-            span=location
+	head
+		meta(charset='UTF-8')
+		title= name + '-个人简历'
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		script.
+			@@include('js/browser.js')
+			if(browser.support && location.href.split('=')[1] !== 'debug') location.href = "/";
+		link(rel='stylesheet', href='css/old.css')
+	body
+		base(target="_blank")
+		div#cv
+			div.basic-info
+				div.avatar
+					img(src="/img/avatar.png")
+				div.name=name
+				ul.contact
+					li
+						i.icon-phone
+						span=phone
+					li
+						i.icon-email
+						span=email
+					li
+						i.icon-weixin
+						span=weixin
+					li
+						i.icon-github
+						span
+							a(href=github) github
+					li
+						i.icon-lofter
+						span
+							a(href=lofter) lofter
+					li
+						i.icon-location
+						span=location
 
-      div.detail
-        div.section
-          h2.section-title 技能简介
-          != skill_des
+			div.detail
+				div.section
+					h2.section-title 技能简介
+					!= skill_des
 
-        div.section
-          h2.section-title 部分个人项目
-          - each v, i in project
-            p
-              a(href=v.href)= v.name
-              |  —— 
-              !=v.des
+				div.section
+					h2.section-title 部分个人项目
+					- each v, i in project
+						p
+							a(href=v.href)= v.name
+							|  —— 
+							!=v.des
 
-        -each v, i in info
-          div.section
-            h2.section-title=v.title
-            p!=v.content
-    div(style='position:fixed; width: 10px; height: 10px; overflow: hidden; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)').
-      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257791766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257791766%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-
-
+				-each v, i in info
+					div.section
+						h2.section-title=v.title
+						p!=v.content
+		div(style='position:fixed; width: 10px; height: 10px; overflow: hidden; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)').
+			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257791766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257791766%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 
 
 
-        
-        
 
-    
-      
+
+				
+				
+
+		
+			

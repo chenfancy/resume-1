@@ -6,154 +6,154 @@
 @cv-color: #eee;
 
 body{
-  .bc(#B9B4AC);
+	.bc(#B9B4AC);
 }
 #cv{
-  max-width: @width;
-  min-width: @min-width;
-  min-height: 500px;
-  .bc(@cv-color);
-  .rel();
-  .br(5px);
-  // overflow: hidden;
-  margin: 20px auto 100px auto;
-  padding: 20px 0;
-  font-faily: @font-family;
-  .fit();
+	max-width: @width;
+	min-width: @min-width;
+	min-height: 500px;
+	.bc(@cv-color);
+	.rel();
+	.br(5px);
+	// overflow: hidden;
+	margin: 20px auto 100px auto;
+	padding: 20px 0;
+	font-faily: @font-family;
+	.fit();
 
-  &:before{
-    content: ' ';
-    left: 10px;
-    top: 50px;
-    bottom: 0;
-    right: 50px;
-    .abs();
-    .bs(-30px 20px 80px #524E46);
-    .br(50px+/+300px);
-    z-index: -1;
-  }
+	&:before{
+		content: ' ';
+		left: 10px;
+		top: 50px;
+		bottom: 0;
+		right: 50px;
+		.abs();
+		.bs(-30px 20px 80px #524E46);
+		.br(50px+/+300px);
+		z-index: -1;
+	}
 }
 
 .basic-info{
-  &>*{
-    margin: 20px auto;
-  }
-  width: 30%;
-  // height: 500px;
-  // .bc(#D3E7E5);
-  // padding: 20px;
-  float: left;
-  overflow: hidden;
+	&>*{
+		margin: 20px auto;
+	}
+	width: 30%;
+	// height: 500px;
+	// .bc(#D3E7E5);
+	// padding: 20px;
+	float: left;
+	overflow: hidden;
 
-  .avatar{
-    @d: 100px;
-    width: @d;
-    height: @d;
-    .br(@d/2);
-    .bc(#ddd);
-    overflow: hidden;
-    img{
+	.avatar{
+		@d: 100px;
+		width: @d;
+		height: @d;
+		.br(@d/2);
+		.bc(#ddd);
+		overflow: hidden;
+		img{
 
-    }
-  }
-  .name{
-    line-height: 1.5;
-    font-size: 25px;
-    color: @color;
-    text-align: center;
-  }
-  ul.contact{
-    width: 150px;
-    margin: 40px auto;
-    &>li{
-      font-size: 16px;
-      @edge: 30px;
-      i{
-        width: @edge;
-        height: @edge;
-        line-height: @edge;
-        float: left;
-        text-align: center;
-      }
-      span{
-        // i标签设置左浮动, span不设置浮动, 因此span默认占满整个li宽度
-        // 但i标签会挤压它, 如果i是absolute则不会挤压
-        display: block;
-        line-height: @edge;
-      }
-    }
-  }
+		}
+	}
+	.name{
+		line-height: 1.5;
+		font-size: 25px;
+		color: @color;
+		text-align: center;
+	}
+	ul.contact{
+		width: 150px;
+		margin: 40px auto;
+		&>li{
+			font-size: 16px;
+			@edge: 30px;
+			i{
+				width: @edge;
+				height: @edge;
+				line-height: @edge;
+				float: left;
+				text-align: center;
+			}
+			span{
+				// i标签设置左浮动, span不设置浮动, 因此span默认占满整个li宽度
+				// 但i标签会挤压它, 如果i是absolute则不会挤压
+				display: block;
+				line-height: @edge;
+			}
+		}
+	}
 }
 
 
 .detail{
-  &>*{
-    margin: 20px;
-  }
-  width: 70%;
-  width: 69%\0;
-  float: right;
-  // padding: 0 20px;
-  border-left: 1px solid #ccc;
+	&>*{
+		margin: 20px;
+	}
+	width: 70%;
+	width: 69%\0;
+	float: right;
+	// padding: 0 20px;
+	border-left: 1px solid #ccc;
 
-  .section{
-    .section-title{
-      @h: 40px;
-      font-size: 16px;
-      height: @h;
-      line-height: @h;
-      border-bottom: 2px solid #ccc;
+	.section{
+		.section-title{
+			@h: 40px;
+			font-size: 16px;
+			height: @h;
+			line-height: @h;
+			border-bottom: 2px solid #ccc;
 
-    }
-    p{
-      font-size: 12px;
-      margin: 10px 0;
-      line-height: 1.8;
-      i, strong{
-        color: #296;
-        font-weight: normal;
-      }
-      a{
-        color: #67c;
-      }
-    }
-    dl{
-      margin: 10px 0;
-      dt{
-        float: left;
-      }
-    }
-  }
+		}
+		p{
+			font-size: 12px;
+			margin: 10px 0;
+			line-height: 1.8;
+			i, strong{
+				color: #296;
+				font-weight: normal;
+			}
+			a{
+				color: #67c;
+			}
+		}
+		dl{
+			margin: 10px 0;
+			dt{
+				float: left;
+			}
+		}
+	}
 }
 
 
 
 @media screen and (max-width: @width) {
-  body{
-    .bc(@cv-color);
-  }
-  #cv{
-    margin: 0;
-    .br(0);
-    &:before{
-      display: none;
-    }
-  }
-  .basic-info{
-    width: 100%;
-    ul.contact{
-      margin: 0 auto;
-    }
-  }
-  .detail{
-    border: none;
-    width: 100%;
-    .section{
-      p{
-        font-size: 14px;
-      }
-    }
-  }
+	body{
+		.bc(@cv-color);
+	}
+	#cv{
+		margin: 0;
+		.br(0);
+		&:before{
+			display: none;
+		}
+	}
+	.basic-info{
+		width: 100%;
+		ul.contact{
+			margin: 0 auto;
+		}
+	}
+	.detail{
+		border: none;
+		width: 100%;
+		.section{
+			p{
+				font-size: 14px;
+			}
+		}
+	}
 }
 
 
