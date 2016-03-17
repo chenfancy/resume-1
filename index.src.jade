@@ -1,101 +1,101 @@
 doctype html
 html(lang='en')
-	head
-		meta(charset='UTF-8')
-		title= name + '-个人简历'
-		meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome')
-		meta(name='renderer', content='webkit')
-		script.
-			@@include('./js/browser.js')
-			if(!browser.support) location.href = "old.html";
-		script.
-			var bgUrl = "#{bgUrl}";
-		link(rel="stylesheet", href="css/index.css")
-	body
-		div#wait.icon-wait
-		div#stage
-			div#cube
-				div.face.face_home.fit
-					div.content.home
-						div.avatar-box
-							div.avatar-container
-								|@@include('svg/wo.svg')
-						div.contact-box
-							h1.name.center= name
-							ul.contact.auto
-								li
-									i.icon-phone
-									span= phone
-								li
-									i.icon-email
-									span= email
-								li
-									i.icon-weixin
-									span=weixin
-								//- li
-								//-   i.icon-qq
-								//-   span= qq
-								li
-									i.icon-github
-									span
-										a(href= github) github
-								li
-									i.icon-lofter
-									span
-										a(href= lofter) lofter
-								li
-									i.icon-location
-									span= location
-				div.face.face_skill
-					div.content.skill.fit
-						div.skill_des
-							!= skill_des
+  head
+    meta(charset='UTF-8')
+    title= name + '-个人简历'
+    meta(http-equiv='X-UA-Compatible', content='IE=Edge, chrome')
+    meta(name='renderer', content='webkit')
+    script.
+      @@include('./js/browser.js')
+      if(!browser.support) location.href = "old.html";
+    script.
+      var bgUrl = "#{bgUrl}";
+    link(rel="stylesheet", href="css/index.css")
+  body
+    div#wait.icon-wait
+    div#stage
+      div#cube
+        div.face.face_home.fit
+          div.content.home
+            div.avatar-box
+              div.avatar-container
+                |@@include('svg/wo.svg')
+            div.contact-box
+              h1.name.center= name
+              ul.contact.auto
+                li
+                  i.icon-phone
+                  span= phone
+                li
+                  i.icon-email
+                  span= email
+                li
+                  i.icon-weixin
+                  span=weixin
+                //- li
+                //-   i.icon-qq
+                //-   span= qq
+                li
+                  i.icon-github
+                  span
+                    a(href= github) github
+                li
+                  i.icon-lofter
+                  span
+                    a(href= lofter) lofter
+                li
+                  i.icon-location
+                  span= location
+        div.face.face_skill
+          div.content.skill.fit
+            div.skill_des
+              != skill_des
 
-						ul.skill_chart
-							each v, a in skill_chart
-								li
-									i(k= a + '-' + v)
-											//- 因为jade不能动态include
-											|@@include('svg/skill/#{a}.svg')
-									div
-										i(style='width: #{v}%')
-				div.face.face_project
-					div.content.project.fit
-						h2.title(style='color: #fff') 部分个人项目&emsp;
-							a(href= github) 查看Github
-						- each v, i in project
-							div
-								a(href= v.href||'javascript:;')
-									|@@include('svg/project/#{v.title}.svg')
-								p.p_des
-									a.b(href= v.href||'javascript:;')= v.name
-									|  — 
-									!= v.des
-				div.face.face_work
-					div.content.work
-						h2.title(style='color: #fff') 部分3D作品&emsp;
-							a(href= lofter) 查看Lofter
-						ul.w_ul
-							li
-							li
-							li
-							li
-							li
-				div.face.face_info
-					div.content.info.fit
-						- each v, i in info
-							div
-								h2= v.title
-								p!= v.content
-		ul#nav
-		base(target='_blank')
-		div#show
+            ul.skill_chart
+              each v, a in skill_chart
+                li
+                  i(k= a + '-' + v)
+                      //- 因为jade不能动态include
+                      |@@include('svg/skill/#{a}.svg')
+                  div
+                    i(style='width: #{v}%')
+        div.face.face_project
+          div.content.project.fit
+            h2.title(style='color: #fff') 部分个人项目&emsp;
+              a(href= github) 查看Github
+            - each v, i in project
+              div
+                a(href= v.href||'javascript:;')
+                  |@@include('svg/project/#{v.title}.svg')
+                p.p_des
+                  a.b(href= v.href||'javascript:;')= v.name
+                  |  — 
+                  != v.des
+        div.face.face_work
+          div.content.work
+            h2.title(style='color: #fff') 部分3D作品&emsp;
+              a(href= lofter) 查看Lofter
+            ul.w_ul
+              li
+              li
+              li
+              li
+              li
+        div.face.face_info
+          div.content.info.fit
+            - each v, i in info
+              div
+                h2= v.title
+                p!= v.content
+    ul#nav
+    base(target='_blank')
+    div#show
 
-		div(style='position:fixed; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)').
-			<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257791766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257791766%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
-		a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
-			|@@include('svg/fork.svg')
+    div(style='position:fixed; left:0px; top:0px; opacity:0.05; filter:alpha(opacity=5)').
+      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1257791766'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1257791766%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+    a(href= github + '/resume', style='width:150px; height:150px; position:fixed; top:0; right:0')
+      |@@include('svg/fork.svg')
 
-		script(src="index.app.js")
+    script(src="index.app.js")
 
 

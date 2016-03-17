@@ -7,7 +7,7 @@ path=server/resume
 
 ifeq ($(m),)
 	m=up
-endif	
+endif 
 
 test:
 	gulp
